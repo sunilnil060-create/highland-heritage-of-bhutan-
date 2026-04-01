@@ -1,0 +1,454 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highland Heritage of Bhutan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">Highland Heritage</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+    <a href="#about-portal" class="smooth-scroll">About</a>
+    <ul class="dropdown-menu">
+        <li><a href="#about-portal" class="smooth-scroll">Org Info</a></li>
+        <li><a href="#about-portal" class="smooth-scroll">Mission</a></li>
+        <li><a href="#about-portal" class="smooth-scroll">Vision</a></li>
+    </ul>
+</li>
+            <li class="dropdown">
+                <a href="#">Locations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="haa-resources.html">Haa Resources</a></li>
+                    <li><a href="sephu-resources.html">Sephu Resources</a></li>
+                    <li><a href="thimphu-resources.html">Thimphu Resources</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+    <a href="resources.html">Additional Resources</a>
+   
+</li>
+            <li class="dropdown">
+                <a href="#">Themes</a>
+                <ul class="dropdown-menu">
+                    <li><a href="page-theme.html">Environment</a></li>
+                    <li><a href="#">Culture & Identity</a></li>
+                    <li><a href="#">Cosmology</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Interactive Map</a></li>
+            <li><a href="#">Announcements</a></li>
+            
+           <li class="lang-item">
+    <div class="lang-wrapper" id="lang-wrapper">
+        <button class="lang-btn" id="lang-btn" aria-label="Change language">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span id="lang-label">EN</span>
+            <span class="arrow">▾</span>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-option active" data-lang="en">
+                <span class="lang-code">EN</span>
+                <span class="lang-name">English</span>
+                <span class="lang-check">✓</span>
+            </button>
+            <button class="lang-option" data-lang="dz" disabled>
+                <span class="lang-code">DZ</span>
+                <span class="lang-name">རྫོང་ཁ</span>
+                <span class="lang-soon"></span>
+            </button>
+        </div>
+    </div>
+</li>
+        </ul>
+
+        
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="slideshow-container">
+        <div class="slide active" style="background-image: url('images/undp-bhutan-laya-yaks-dec-2024.jpg');"></div>
+        <div class="slide" style="background-image: url('images/undp-bhutan-baby-yaks-seo-dec-2024.png');"></div>
+        <div class="slide" style="background-image: url('images/undp-bhutan-yaks-laya-dec-2024.jpg');"></div>
+        <div class="slide" style="background-image: url('images/Haa-Cliffside-Jungney-Temple.avif');"></div>
+        <div class="slide" style="background-image: url('images/tshonapata-treasure-lake.jpg');"></div>
+        <div class="slide" style="background-image: url('images/Snowmant Trek1.jpg');"></div>
+    </div>
+    <div class="hero-content">
+        <span class="badge">✦ LIVING TRADITIONS OF BHUTAN</span>
+        <h1>Highland <br> Heritage <br> <span class="serif">of Bhutan</span></h1>
+        <p>Stories, films, and cultural narratives from the highlands — <br> preserving the living traditions of Haa, Sephu, and Thimphu.</p>
+    </div>
+</section>
+<!-- ════════════════════════════════════════════
+     UPDATED ml-section — replace your existing one
+     Links now point to: film.html, photo-essay.html, vignette.html
+     ════════════════════════════════════════════ -->
+
+<section class="ml-section" id="ml-section">
+
+  <div class="ml-header">
+    <div class="ml-header-left">
+      <p class="ml-eyebrow">✦ STORIES FROM THE HIGHLANDS</p>
+      <h2 class="ml-title">Media Library</h2>
+      <p class="ml-sub">Films, photo essays, and ethnographic vignettes from the highlands of Bhutan.</p>
+    </div>
+    
+  </div>
+
+  <div class="ml-slider-wrap">
+    <div class="ml-slides" id="mlSlides">
+
+     
+
+    <!-- CARD 1: FILM -->
+    <div class="ml-card">
+        <div class="ml-media">
+    <video class="ml-video" id="mlVideo" muted loop playsinline
+        poster="images/undp-bhutan-laya-yaks-dec-2024.jpg">
+        <source src="images/AQPBd4f9xG1uJQHm9mvqDD3CxjiwTqgFL2smbXxAKavKMzD8IvKih31SCG1qAohS8WSCOhVbAJKb6E71Qj_0sUW-prxm5KKJ6nEKwZusD1lnPw.mp4" type="video/mp4">
+    </video>
+    <div class="ml-media-overlay">
+        <span class="ml-type-pill pill-film">▶ Film · 12:45</span>
+    </div>
+    <button class="ml-play-btn" id="mlPlayBtn">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M7 4L18 11L7 18V4Z" fill="white"/>
+        </svg>
+    </button>
+</div>
+        <div class="ml-body">
+            <div class="ml-body-inner">
+                <span class="ml-number">01</span>
+                <p class="ml-category">Film</p>
+                <h3 class="ml-card-title">A Celebration of High-Altitude Heritage<br><em>of Laya</em></h3>
+                <p class="ml-card-desc">The Royal Highland Festival in Laya is a vibrant celebration of Bhutan's high-altitude communities and their resilient way of life. By showcasing prized yaks and local craftsmanship, the festival honors the deep bond between the people and their environment, preserving a unique cultural identity for future generations.</p>
+                <div class="ml-tags">
+                    <span class="ml-tag">Environment</span>
+                    <span class="ml-tag">Culture</span>
+                </div>
+                <a href="film.html" class="ml-cta">Watch Film →</a>
+            </div>
+        </div>
+    </div>
+
+      <!-- CARD 2: PHOTO ESSAY -->
+      <div class="ml-card">
+        <div class="ml-media">
+          <img class="ml-img" src="images/mask dance.jpg" alt="Sacred Rituals of the Highlands">
+          <div class="ml-media-overlay">
+            <span class="ml-type-pill pill-essay">⬡ Photo Essay · 24 photos</span>
+          </div>
+        </div>
+        <div class="ml-body">
+          <div class="ml-body-inner">
+            <span class="ml-number">02</span>
+            <p class="ml-category">Photo Essay</p>
+            <h3 class="ml-card-title">Sacred Rituals<br><em>of the Highlands</em></h3>
+            <p class="ml-card-desc">Against the backdrop of high-altitude peaks, the festival serves as a vibrant display of devotion and artistry. The dancers in the image perform intricate movements that symbolize the subduing of negative energies and the celebration of faith.</p>
+            <div class="ml-tags">
+              <span class="ml-tag">Thimphu</span>
+              <span class="ml-tag">Cosmology</span>
+              <span class="ml-tag">Ritual</span>
+            </div>
+            <!-- UPDATED LINK -->
+            <a href="photo-essay.html" class="ml-cta">View Essay →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: VIGNETTE -->
+      <div class="ml-card">
+        <div class="ml-media">
+          <img class="ml-img" src="images/tshio.jpg" alt="Tshonapata Treasure Lake">
+          <div class="ml-media-overlay">
+            <span class="ml-type-pill pill-vignette">◈ Vignette · 8 min read</span>
+          </div>
+        </div>
+        <div class="ml-body">
+          <div class="ml-body-inner">
+            <span class="ml-number">03</span>
+            <p class="ml-category">Vignette</p>
+            <h3 class="ml-card-title">Tshonapata<br><em>Treasure Lake</em></h3>
+            <p class="ml-card-desc">A short ethnographic vignette on the sacred lake of Tshonapata — its cosmological significance, the oral histories surrounding it, and the communities who protect it.</p>
+            <div class="ml-tags">
+              <span class="ml-tag">Haa</span>
+              <span class="ml-tag">Cosmology</span>
+              <span class="ml-tag">Nature</span>
+            </div>
+            <!-- UPDATED LINK -->
+            <a href="vignette.html" class="ml-cta">Read Vignette →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ml-controls">
+      <button class="ml-btn" id="mlPrev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M11 3L5 9L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="ml-progress-wrap">
+        <div class="ml-dots" id="mlDots">
+          <button class="ml-dot active" data-i="0"></button>
+          <button class="ml-dot" data-i="1"></button>
+          <button class="ml-dot" data-i="2"></button>
+        </div>
+        <span class="ml-counter" id="mlCounter">01 / 03</span>
+      </div>
+      <button class="ml-btn" id="mlNext" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M7 3L13 9L7 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="ml-autoplay-bar">
+      <div class="ml-autoplay-fill" id="mlAutoplayFill"></div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- FULLSCREEN VIDEO PLAYER -->
+<div class="video-overlay" id="videoOverlay">
+    <button class="video-close-btn" onclick="closeVideoFull()">✕</button>
+    <div class="video-fullscreen-wrap">
+        <video id="fullscreenVideo" controls autoplay>
+            <source id="fullscreenSource" src="" type="video/mp4">
+        </video>
+    </div>
+    <div class="video-fullscreen-desc" id="fullscreenDesc">
+        <strong id="fullscreenTitle"></strong>
+        <span id="fullscreenText"></span>
+    </div>
+</div>
+
+
+<section id="about-portal" class="aesthetic-portal">
+    <div class="portal-grid">
+       
+        
+        <div class="identity-side">
+            <span class="eyebrow">✦ ABOUT THE PROJECT</span>
+            <h1 class="main-heading">A Digital Bridge <br> to the <em>Highlands</em></h1>
+            <p class="project-desc">Documenting the sacred rituals, oral histories, and environmental wisdom of Bhutan's high-altitude communities through an academic lens.</p>
+            
+            <div class="partnership-tag">
+                <img src="images/rtc.webp" alt="RTC">
+                <span>A Royal Thimphu College Initiative</span>
+            </div>
+        </div>
+
+        <div class="pillars-side">
+    
+    <div class="pillar-card">
+        <div class="pillar-content">
+            <div class="pillar-label">01 / <strong>ORGANIZATION</strong></div>
+            <h3><strong>Academic Stewardship</strong></h3>
+            <p>Led by <strong>RTC faculty and students</strong> in collaboration with local community leaders.</p>
+        </div>
+    </div>
+
+    <div class="pillar-card highlight">
+        <div class="pillar-content">
+            <div class="pillar-label">02 / <strong>OUR MISSION</strong></div>
+            <h3><strong>Cultural Preservation</strong></h3>
+            <p>Creating a <strong>sustainable digital repository</strong> for future generations of Bhutanese scholars.</p>
+        </div>
+    </div>
+
+    <div class="pillar-card">
+        <div class="pillar-content">
+            <div class="pillar-label">03 / <strong>THE VISION</strong></div>
+            <h3><strong>Global Connection</strong></h3>
+            <p>Showcasing the <strong>resilience of highland life</strong> to the global digital community.</p>
+        </div>
+    </div>
+
+    <div class="pillar-card info-expand-card">
+        <div class="pillar-content">
+            <div class="pillar-label">04 / <strong>PROJECT DEPTH</strong></div>
+            <h3><strong>The Highland Narrative</strong></h3>
+            <p class="text-preview">
+                This initiative integrates <strong>traditional ecological knowledge</strong> with digital archiving.
+            </p>
+
+            <input type="checkbox" id="read-more-check" class="read-more-check">
+            <div class="full-text">
+                <p>Our methodology involves <strong>year-long field studies</strong> across Haa and Sephu. We ensure that <strong>environmental wisdom</strong> is preserved for future research.</p>
+            </div>
+
+            <label for="read-more-check" class="read-more-btn">
+                <span class="open-text"><strong>Read More ✦</strong></span>
+                <span class="close-text"><strong>Show Less ▴</strong></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="core-values-wrapper">
+        <div class="pillar-label"><strong>OUR GUIDING PRINCIPLES</strong></div>
+        <div class="values-grid">
+            
+            <div class="value-box">
+                <div class="value-icon">🌿</div>
+                <h4><strong>Authenticity</strong></h4>
+                <p>Honoring <strong>raw community voices</strong>.</p>
+            </div>
+
+            <div class="value-box">
+                <div class="value-icon">📚</div>
+                <h4><strong>Scholarship</strong></h4>
+                <p>Maintaining <strong>academic rigor</strong> always.</p>
+            </div>
+
+            <div class="value-box">
+                <div class="value-icon">🤝</div>
+                <h4><strong>Reciprocity</strong></h4>
+                <p>Ensuring <strong>mutual benefit</strong> for all.</p>
+                 
+       
+
+            </div>
+
+        </div>
+        <section class="lesson-explorer">
+    <div class="lx-container">
+        <div class="lx-content">
+            <span class="eyebrow">✦ EDUCATIONAL RESOURCES</span>
+            <h2 class="lx-title">Lesson <br> Plans</h2>
+            <p class="lx-desc">
+                Access curated teaching materials designed for educators and students. 
+                Explore the intersection of traditional ecology and cultural history 
+                through structured academic modules.
+            </p>
+            <a href="lesson.html" class="lx-btn">
+                Explore Lessons <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="lx-visual">
+            <div class="lx-illustration-wrap">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <img src="images/lesson.webp" alt="Lesson Visual" class="lx-main-img">
+                <div class="lx-badge-card">
+                    <div class="icon">📚</div>
+                    <div>
+                        <strong>Curriculum Ready</strong>
+                        <span>Academic Standard 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </div>
+
+</div>
+
+    </div>
+</section>
+<footer class="footer-root">
+
+  <div class="footer-top-bar">
+    <span class="footer-top-tagline">✦ Preserving Living Traditions of Bhutan</span>
+  </div>
+
+  <div class="footer-grid">
+
+    <!-- Brand column -->
+    <div class="footer-brand-col">
+      <p class="footer-brand-name">Highland Heritage</p>
+      <p class="footer-brand-desc">Documenting the sacred rituals, oral histories, and environmental wisdom of Bhutan's high-altitude communities through an academic lens.</p>
+      <div class="footer-rtc-tag">
+        <div class="footer-rtc-dot">RTC</div>
+        A Royal Thimphu College Initiative
+      </div>
+      <div class="footer-badge-row">
+        <span class="footer-badge">Haa</span>
+        <span class="footer-badge">Sephu</span>
+        <span class="footer-badge">Thimphu</span>
+      </div>
+    </div>
+
+    <!-- Explore column -->
+    <div>
+      <p class="footer-col-label">Explore</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="haa-resources.html">Haa Resources</a></li>
+        <li><a href="sephu-resources.html">Sephu Resources</a></li>
+        <li><a href="thimphu-resources.html">Thimphu Resources</a></li>
+        <li><a href="film.html">Films</a></li>
+        <li><a href="photo-essay.html">Photo Essays</a></li>
+        <li><a href="vignette.html">Vignettes</a></li>
+      </ul>
+    </div>
+
+    <!-- Themes column -->
+    <div>
+      <p class="footer-col-label">Themes</p>
+      <ul class="footer-links">
+        <li><a href="index.html#theme-environment">Environment</a></li>
+        <li><a href="index.html#theme-culture">Culture &amp; Identity</a></li>
+        <li><a href="index.html#theme-cosmology">Cosmology</a></li>
+        <li><a href="#">Oral Traditions</a></li>
+        <li><a href="#">Sacred Landscape</a></li>
+      </ul>
+    </div>
+
+    <!-- About column -->
+    <div>
+      <p class="footer-col-label">About</p>
+      <ul class="footer-links">
+        <li><a href="#about-portal">Org Info</a></li>
+        <li><a href="#about-portal">Mission</a></li>
+        <li><a href="#about-portal">Vision</a></li>
+        <li><a href="lesson.html">Lesson Plans</a></li>
+        <li><a href="index.html#announcements">Announcements</a></li>
+      </ul>
+      <p class="footer-col-label footer-col-label--spaced">Follow</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social-btn" title="YouTube">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.75 15.5v-7l6.25 3.5-6.25 3.5z"/></svg>
+        </a>
+        <a href="#" class="footer-social-btn" title="Instagram">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.2 4.8 1.7 5 5 .1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.2 3.3-1.7 4.8-5 5-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.2-4.8-1.7-5-5C2.2 15.6 2.2 15.3 2.2 12c0-3.2 0-3.6.1-4.8.2-3.3 1.7-4.8 5-5C8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4A6.2 6.2 0 0012 5.8zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+        </a>
+        <a href="#" class="footer-social-btn" title="Facebook">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Highland Heritage Project · A Royal Thimphu College Initiative · Thimphu, Bhutan</p>
+    <div class="footer-legal-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+</footer>
+</body>
+</html>

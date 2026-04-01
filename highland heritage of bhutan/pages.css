@@ -1,0 +1,626 @@
+/* ═══════════════════════════════════════════
+   pages.css
+   Shared stylesheet for:
+     film.html · photo-essay.html · vignette.html
+
+   Link in all three pages:
+   <link rel="stylesheet" href="pages.css">
+   
+   Each page gets its own accent colour via a
+   data attribute on <body>:
+     film.html        → <body data-page="film">
+     photo-essay.html → <body data-page="essay">
+     vignette.html    → <body data-page="vignette">
+═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Poppins:wght@300;400;600&display=swap');
+
+/* ─────────────────────────────────────────
+   CSS VARIABLES — defaults (film page)
+   Overridden per page via data-page below
+───────────────────────────────────────── */
+:root {
+  --accent:      #c9941a;   /* amber for film */
+  --accent-soft: #f5e8c8;
+  --badge-bg:    #c9941a;
+  --badge-text:  #0e0d0b;
+}
+
+[data-page="essay"] {
+  --accent:      #c9a45a;
+  --accent-soft: #fdf5e6;
+  --badge-bg:    rgba(201,164,90,0.88);
+  --badge-text:  #ffffff;
+}
+
+
+[data-page="vignette"] {
+  --accent:      #c9a45a;
+  --accent-soft: #fdf5e6;
+  --badge-bg:    rgba(201,164,90,0.88);
+  --badge-text:  #ffffff;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f2ed;
+  font-family: 'DM Sans', sans-serif;
+  color: #1a1a18;
+}
+
+/* ─────────────────────────────────────────
+   NAVBAR — identical brand colours on all pages
+───────────────────────────────────────── */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6%;
+  height: 65px;
+  background: #e1eadf;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+
+.navbar nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar nav ul li {
+  height: 65px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  padding: 8px 12px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.25s;
+}
+
+.navbar a:hover { color: #1b4332; }
+
+.btn-nav {
+  background: #4a7c59 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 8px 20px !important;
+}
+
+/* ─────────────────────────────────────────
+   PAGE HERO BANNER
+───────────────────────────────────────── */
+.page-hero {
+  margin-top: 65px;
+  background: #1b4332;
+  padding: 70px 8% 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* faint background image — set per page inline */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* accent left border — uses per-page variable */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  z-index: 2;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 400;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+  transition: gap 0.2s;
+}
+.back-link:hover { gap: 14px; }
+
+.hero-eyebrow {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 68px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.page-hero p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.72);
+  max-width: 540px;
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.hero-tag {
+  font-size: 11px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   MAIN CONTENT AREA
+───────────────────────────────────────── */
+.page-content {
+  padding: 72px 8% 96px;
+}
+
+.section-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #1b4332;
+  margin-bottom: 44px;
+}
+
+/* ─────────────────────────────────────────
+   4-BOX GRID
+───────────────────────────────────────── */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* ─────────────────────────────────────────
+   MEDIA BOX — each card
+───────────────────────────────────────── */
+.media-box {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(27,67,50,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.media-info {
+  padding: 16px 18px 20px;
+}
+
+.media-title {
+  font-size: 18px;
+}
+
+.media-desc {
+  font-size: 12px;
+}
+.media-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 52px rgba(27,67,50,0.15);
+}
+.media-box:nth-child(6) {
+  transform: scale(1.05);
+}
+/* ROW 1 → first 4 boxes (normal) */
+/* no change needed */
+
+/* ROW 2 → 3 boxes */
+.media-box:nth-child(5) { grid-column: span 1; }
+.media-box:nth-child(6) { grid-column: span 2; }
+.media-box:nth-child(7) { grid-column: span 1; }
+
+/* ROW 3 → next 4 boxes */
+.media-box:nth-child(8),
+.media-box:nth-child(9),
+.media-box:nth-child(10),
+.media-box:nth-child(11) {
+  grid-column: span 1;
+}
+/* ── Media slot (image or video) ── */
+.media-slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #1b4332;
+  overflow: hidden;
+}
+
+/* Photo essay: square crop feels more gallery-like */
+[data-page="essay"] .media-slot {
+  aspect-ratio: 4 / 3;
+}
+
+.media-slot img,
+.media-slot video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.media-box:hover .media-slot img,
+.media-box:hover .media-slot video {
+  transform: scale(1.05);
+}
+
+/* Dark gradient over media */
+.media-slot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.38) 0%, transparent 55%);
+  pointer-events: none; /* THIS MUST BE NONE so you can click through it */
+  z-index: 1;
+}
+
+/* Add this to show the user they can click it */
+.media-box:hover {
+  cursor: pointer;
+}
+
+/* ── Placeholder for empty slots ── */
+.media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+.media-placeholder svg { opacity: 0.45; }
+
+.media-placeholder span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ── Type badge — bottom-left of media slot ── */
+.media-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 3px;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Accent line slides up the left edge on hover ── */
+.media-info {
+  padding: 22px 26px 28px;
+  position: relative;
+}
+
+.media-info::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.6s cubic-bezier(0.77,0,0.175,1);
+}
+
+.media-box:hover .media-info::before {
+  height: 100%;
+}
+
+.media-topic {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.media-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #1b4332;
+  margin-bottom: 10px;
+  line-height: 1.25;
+  transition: transform 0.35s ease;
+}
+
+.media-box:hover .media-title {
+  transform: translateX(5px);
+}
+
+.media-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: #999;
+  line-height: 1.85;
+}
+
+.media-meta {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  color: #bbb;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0d2b1e;
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .page-hero h1 { font-size: 48px; }
+}
+
+@media (max-width: 680px) {
+  .media-grid { grid-template-columns: 1fr; }
+  .page-hero h1 { font-size: 38px; }
+  .page-hero { padding: 50px 6% 44px; }
+  .page-content { padding: 50px 6% 70px; }
+  .navbar nav { display: none; }
+}
+/* FULLSCREEN VIDEO OVERLAY */
+.video-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+}
+.video-overlay.active { display: flex; }
+
+.video-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 26px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    z-index: 2;
+}
+.video-close-btn:hover { color: #fff; transform: scale(1.15); }
+
+.video-fullscreen-wrap {
+    width: 90vw;
+    max-width: 1100px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 100px rgba(0,0,0,0.7);
+}
+.video-fullscreen-wrap video {
+    width: 100%;
+    display: block;
+    max-height: 80vh;
+    object-fit: contain;
+    background: #000;
+}
+
+.video-fullscreen-desc {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.video-fullscreen-desc strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+.video-fullscreen-desc span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    max-width: 580px;
+    line-height: 1.7;
+}
+/* ── PAGE SWITCHER TABS ── */
+/* Reduce the gap between navbar and the tabs */
+.page-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 80px 8% 10px; /* Reduced from 90px top and added 10px bottom */
+  background: #f5f2ed;
+}
+
+/* Reduce the gap between tabs and the text content */
+.page-content {
+  padding: 20px 8% 96px; /* Reduced from 72px top to 20px */
+}
+.page-tab {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 30px;
+  border: 1.5px solid #c8d8c4;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.page-tab:hover {
+  background: #1b4332;
+  color: white;
+  border-color: #1b4332;
+}
+
+.page-tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.lesson-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #2d6a4f; /* Using your theme green */
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.lesson-link:hover {
+    color: #1b4332;
+    border-bottom: 1px solid #52b788;
+    padding-left: 5px; /* Slight nudge effect */
+}
+.breadcrumb-bar {
+  position: sticky;
+  top: 65px;
+  z-index: 900;
+  background: #1b4332;
+  border-bottom: 1px solid rgba(82, 183, 136, 0.2);
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+.breadcrumb-bar ol {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  align-items: center;
+}
+.breadcrumb-bar ol li {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+.breadcrumb-bar ol li + li::before {
+  content: '›';
+  margin: 0 8px;
+  color: rgba(82, 183, 136, 0.45);
+}
+.breadcrumb-bar ol li a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb-bar ol li a:hover { color: #52b788; }
+.breadcrumb-bar ol li.bc-current {
+  color: #52b788;
+  font-weight: 600;
+}

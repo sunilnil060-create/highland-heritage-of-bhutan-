@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Resources — Highland Heritage of Bhutan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ─── RESET & BASE ─── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --green-deep:   #1b4332;
+            --green-mid:    #2d6a4f;
+            --green-bright: #52b788;
+            --green-pale:   #d8eadd;
+            --green-light:  #f3fbf6;
+            --green-cream:  #f5f2ed;
+            --gold:         #c9a45a;
+            --gold-pale:    #f5ead8;
+            --text-dark:    #1b2e24;
+            --text-mid:     #4a6358;
+            --text-light:   #8aab96;
+            --white:        #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--green-light);
+            color: var(--text-dark);
+            padding-top: 65px;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: var(--green-deep);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6vw;
+            height: 65px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+        .logo {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+        }
+        .navbar nav ul li { position: relative; }
+        .navbar nav ul li a {
+            display: block;
+            padding: 0.5rem 0.72rem;
+            font-size: 0.77rem;
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .navbar nav ul li a:hover { color: var(--green-bright); }
+        .navbar nav ul li.dropdown > a::after { content: ' ▾'; font-size: 0.58rem; opacity: 0.6; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 4px); left: 0;
+            background: var(--green-deep);
+            border: 1px solid rgba(82,183,136,0.25);
+            border-radius: 8px;
+            min-width: 175px;
+            padding: 0.4rem 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+            z-index: 9999;
+        }
+        .dropdown-menu li a {
+            padding: 0.5rem 1rem;
+            font-size: 0.76rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .dropdown-menu li a:hover { background: rgba(82,183,136,0.15); color: var(--green-bright); }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu { display: block; }
+
+        /* ─── HERO STRIP ─── */
+        .res-hero {
+            background: var(--green-deep);
+            padding: 5rem 6vw 4.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .res-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -80px;
+            width: 480px; height: 480px;
+            border: 1px solid rgba(82,183,136,0.12);
+            border-radius: 50%;
+        }
+        .res-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -200px; right: 200px;
+            width: 380px; height: 380px;
+            border: 1px solid rgba(82,183,136,0.07);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            align-items: end;
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        .res-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .res-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px; height: 1px;
+            background: var(--green-bright);
+        }
+        .res-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 5.5vw, 4rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.08;
+            margin-bottom: 1.3rem;
+        }
+        .res-hero h1 em {
+            font-style: italic;
+            font-weight: 300;
+            color: #a8d5b8;
+        }
+        .res-hero p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.62);
+            line-height: 1.9;
+            max-width: 540px;
+        }
+        .hero-stats-panel {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(82,183,136,0.2);
+            border-radius: 16px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .hero-stat-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(82,183,136,0.12);
+        }
+        .hero-stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .hsr-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green-bright);
+            line-height: 1;
+            min-width: 56px;
+        }
+        .hsr-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+        .hsr-label strong { display: block; color: rgba(255,255,255,0.75); font-weight: 500; font-size: 0.8rem; }
+
+        /* ─── FILTER BAR ─── */
+        .filter-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--green-pale);
+            padding: 0 6vw;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            position: sticky;
+            top: 65px;
+            z-index: 50;
+        }
+        .filter-btn {
+            display: inline-block;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: color 0.2s, border-color 0.2s;
+            cursor: pointer;
+            background: none;
+            border-top: none; border-left: none; border-right: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .filter-btn:hover { color: var(--green-deep); }
+        .filter-btn.active { color: var(--green-deep); border-bottom-color: var(--green-bright); font-weight: 600; }
+        .filter-sep { width: 1px; height: 18px; background: var(--green-pale); flex-shrink: 0; }
+
+        /* ─── MAIN LAYOUT ─── */
+        .res-body {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 3.5rem 6vw 6rem;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+        }
+        @media (max-width: 820px) {
+            .res-body { grid-template-columns: 1fr; }
+            .res-sidebar { display: none; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-stats-panel { display: none; }
+        }
+
+        /* ─── SIDEBAR ─── */
+        .res-sidebar {
+            position: sticky;
+            top: 115px;
+            align-self: start;
+        }
+        .sbl {
+            font-size: 0.6rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .res-sidebar ul { list-style: none; }
+        .res-sidebar ul li { margin-bottom: 0.1rem; }
+        .res-sidebar ul li a {
+            display: block;
+            padding: 0.42rem 0.8rem;
+            font-size: 0.78rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+            border-radius: 0 6px 6px 0;
+        }
+        .res-sidebar ul li a:hover,
+        .res-sidebar ul li a.active {
+            border-left-color: var(--green-bright);
+            color: var(--green-deep);
+            background: rgba(82,183,136,0.09);
+        }
+        .res-sidebar hr { border: none; border-top: 1px solid var(--green-pale); margin: 1.2rem 0; }
+
+        /* ─── CONTENT SECTIONS ─── */
+        .sec-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 2.8vw, 2rem);
+            font-weight: 700;
+            color: var(--green-deep);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .sec-desc {
+            font-size: 0.83rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .sec-divider { border: none; border-top: 1px solid var(--green-pale); margin: 3.5rem 0; }
+
+        /* ─── ACADEMIC REFERENCES — horizontal cards ─── */
+        .ref-list { display: flex; flex-direction: column; gap: 1px; margin-bottom: 0.5rem; }
+        .ref-card {
+            background: var(--white);
+            border: 1px solid #ddeee4;
+            border-radius: 0;
+            padding: 1.4rem 1.6rem;
+            display: grid;
+            grid-template-columns: 52px 1fr auto;
+            gap: 1.2rem;
+            align-items: start;
+            transition: background 0.2s, border-left 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .ref-card:first-child { border-radius: 12px 12px 0 0; }
+        .ref-card:last-child  { border-radius: 0 0 12px 12px; }
+        .ref-card:only-child  { border-radius: 12px; }
+        .ref-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--green-bright);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        .ref-card:hover { background: #f9fdfb; transform: translateX(4px); }
+        .ref-card:hover::before { transform: scaleY(1); }
+        .ref-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--green-pale);
+            line-height: 1;
+            text-align: center;
+            padding-top: 3px;
+        }
+        /* .ref-body { } */
+        .ref-type {
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .ref-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--green-deep);
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+        }
+        .ref-author {
+            font-size: 0.75rem;
+            color: var(--text-mid);
+            font-style: italic;
+            margin-bottom: 0.4rem;
+        }
+        .ref-detail {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-family: 'DM Mono', monospace;
+        }
+        .ref-badge {
+            font-size: 0.58rem;
+            padding: 0.22rem 0.6rem;
+            border-radius: 100px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            align-self: start;
+        }
+        .badge-book     { background: #e6f5ec; color: var(--green-mid); }
+        .badge-journal  { background: #edf0fb; color: #3a4db7; }
+        .badge-report   { background: var(--gold-pale); color: #8a6020; }
+        .badge-chapter  { background: #f3e6f5; color: #7a2d8a; }
+        .badge-thesis   { background: #fde6e6; color: #a03030; }
+
+        /* ─── LINK CARDS GRID ─── */
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .link-card {
+            background: var(--white);
+            border: 1px solid #ddeee4;
+            border-radius: 14px;
+            padding: 1.4rem 1.4rem 1.2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.22s, box-shadow 0.22s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .link-card::after {
+            content: '→';
+            position: absolute;
+            top: 1.1rem; right: 1.2rem;
+            font-size: 0.9rem;
+            color: var(--green-bright);
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.25s, transform 0.25s;
+        }
+        .link-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(27,67,50,0.12); }
+        .link-card:hover::after { opacity: 1; transform: translateX(0); }
+        .lc-icon {
+            width: 42px; height: 42px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .lc-icon.green  { background: #e6f5ec; }
+        .lc-icon.gold   { background: var(--gold-pale); }
+        .lc-icon.blue   { background: #e6edf5; }
+        .lc-icon.purple { background: #f0e6f5; }
+        .lc-type {
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        .lc-title {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--green-deep);
+            line-height: 1.4;
+        }
+        .lc-desc {
+            font-size: 0.73rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+        .lc-source {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            font-family: 'DM Mono', monospace;
+            margin-top: auto;
+        }
+
+        /* ─── GLOSSARY TABLE ─── */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: #ddeee4;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #ddeee4;
+        }
+        .gloss-item {
+            background: var(--white);
+            padding: 1.1rem 1.4rem;
+            transition: background 0.18s;
+        }
+        .gloss-item:hover { background: #f5fcf8; }
+        .gloss-term {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--green-deep);
+            margin-bottom: 0.3rem;
+        }
+        .gloss-phonetic {
+            font-size: 0.65rem;
+            color: var(--green-bright);
+            font-style: italic;
+            margin-bottom: 0.35rem;
+        }
+        .gloss-def {
+            font-size: 0.74rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        /* ─── FEATURED PULL QUOTE ─── */
+        .pull-quote {
+            background: linear-gradient(135deg, var(--green-deep) 0%, #0e2820 100%);
+            border-radius: 18px;
+            padding: 3rem 3.5rem;
+            margin: 0.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .pull-quote::before {
+            content: '"';
+            position: absolute;
+            top: -2rem; left: 1.5rem;
+            font-size: 11rem;
+            color: rgba(82,183,136,0.09);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2vw, 1.28rem);
+            font-style: italic;
+            font-weight: 400;
+            color: #d8eadd;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .pull-attr { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-bright); }
+
+        /* ─── TIMELINE / FIELD NOTES ─── */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px; top: 6px; bottom: 0;
+            width: 1.5px;
+            background: linear-gradient(to bottom, var(--green-bright), var(--green-pale));
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 2.2rem;
+        }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem; top: 5px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--green-bright);
+            border: 2px solid var(--green-light);
+        }
+        .tl-date {
+            font-size: 0.62rem;
+            font-family: 'DM Mono', monospace;
+            color: var(--green-bright);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+        }
+        .tl-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--green-deep);
+            margin-bottom: 0.4rem;
+        }
+        .tl-body {
+            font-size: 0.78rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+        .tl-tag {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.58rem;
+            padding: 0.18rem 0.5rem;
+            border: 1px solid #c8d8c4;
+            border-radius: 100px;
+            color: var(--text-mid);
+        }
+
+        /* ─── DOWNLOAD CARDS ─── */
+        .dl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .dl-card {
+            background: var(--white);
+            border: 1px solid #ddeee4;
+            border-radius: 14px;
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            transition: transform 0.22s, box-shadow 0.22s;
+            cursor: pointer;
+        }
+        .dl-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,67,50,0.1); }
+        .dl-icon {
+            width: 44px; height: 44px;
+            background: var(--green-light);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+        }
+        .dl-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        .dl-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--green-deep);
+            line-height: 1.4;
+        }
+        .dl-meta {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            font-family: 'DM Mono', monospace;
+            margin-top: auto;
+        }
+        .dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--green-mid);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ─── FOOTER ─── */
+        .page-footer {
+            background: #14422e;
+            color: rgba(255,255,255,0.35);
+            text-align: center;
+            font-size: 12.5px;
+            padding: 28px;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .res-hero .hero-inner { animation: fadeUp 0.75s ease both; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            .glossary-grid { grid-template-columns: 1fr; }
+            .res-hero { padding: 3.5rem 6vw 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ NAVBAR ══════════════════════════════ -->
+<header class="navbar">
+    <a href="index.html" class="logo">Highland Heritage</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="index.html#about-portal">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#about-portal">Org Info</a></li>
+                    <li><a href="index.html#about-portal">Mission</a></li>
+                    <li><a href="index.html#about-portal">Vision</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" onclick="return false;">Locations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="haa-resources.html">Haa Resources</a></li>
+                    <li><a href="sephu-resources.html">Sephu Resources</a></li>
+                    <li><a href="thimphu-resources.html">Thimphu Resources</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" onclick="return false;">Themes</a>
+                <ul class="dropdown-menu">
+                    <li><a href="environment.html">Environment</a></li>
+                    <li><a href="culture.html">Culture &amp; Identity</a></li>
+                    <li><a href="cosmology.html">Cosmology</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#interactive-map">Interactive Map</a></li>
+            <li><a href="resources.html" style="color:#52b788; font-weight:600;">Resources</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section class="res-hero">
+    <div class="hero-inner">
+        <div>
+            <p class="res-eyebrow">Additional Resources</p>
+            <h1>A Scholar's<br>Gateway to the<br><em>Bhutanese Highlands</em></h1>
+            <p>Curated academic references, field guides, institutional links, a Dzongkha glossary, and teaching materials — everything you need to explore Bhutan's highland heritage beyond this archive.</p>
+        </div>
+        <div class="hero-stats-panel">
+            <div class="hero-stat-row">
+                <div class="hsr-num">14</div>
+                <div class="hsr-label">
+                    <strong>Academic References</strong>
+                    Books, journals &amp; reports
+                </div>
+            </div>
+            <div class="hero-stat-row">
+                <div class="hsr-num">08</div>
+                <div class="hsr-label">
+                    <strong>External Links</strong>
+                    Institutions &amp; databases
+                </div>
+            </div>
+            <div class="hero-stat-row">
+                <div class="hsr-num">22</div>
+                <div class="hsr-label">
+                    <strong>Glossary Terms</strong>
+                    Dzongkha &amp; cultural vocabulary
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════ FILTER BAR ══════════════════════════════ -->
+<div class="filter-bar" id="filter-bar">
+    <a href="#references"   class="filter-btn active" onclick="setActive(this)">📖 Academic References</a>
+    <div class="filter-sep"></div>
+    <a href="#links"        class="filter-btn" onclick="setActive(this)">🔗 External Links</a>
+    <div class="filter-sep"></div>
+    <a href="#fieldnotes"   class="filter-btn" onclick="setActive(this)">📋 Field Notes</a>
+    <div class="filter-sep"></div>
+    <a href="#glossary"     class="filter-btn" onclick="setActive(this)">🔤 Glossary</a>
+    <div class="filter-sep"></div>
+    <a href="#downloads"    class="filter-btn" onclick="setActive(this)">⬇ Downloads</a>
+</div>
+
+<!-- ══════════════════════════════ BODY ══════════════════════════════ -->
+<div class="res-body">
+
+    <!-- SIDEBAR -->
+    <aside class="res-sidebar">
+        <p class="sbl">✦ Jump To</p>
+        <ul id="toc-nav">
+            <li><a href="#references"  class="active">Academic References</a></li>
+            <li><a href="#links">External Links</a></li>
+            <li><a href="#fieldnotes">Field Notes Timeline</a></li>
+            <li><a href="#glossary">Dzongkha Glossary</a></li>
+            <li><a href="#downloads">Downloads</a></li>
+        </ul>
+        <hr>
+        <p class="sbl">Related Pages</p>
+        <ul>
+            <li><a href="lesson.html">Lesson Plans</a></li>
+            <li><a href="film.html">Films</a></li>
+            <li><a href="photo-essay.html">Photo Essays</a></li>
+            <li><a href="vignette.html">Vignettes</a></li>
+        </ul>
+        <hr>
+        <p class="sbl">Locations</p>
+        <ul>
+            <li><a href="haa-resources.html">Haa Valley</a></li>
+            <li><a href="sephu-resources.html">Sephu</a></li>
+            <li><a href="thimphu-resources.html">Thimphu</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- ════════════ ACADEMIC REFERENCES ════════════ -->
+        <section id="references">
+            <p class="sec-label">✦ Academic References</p>
+            <h2 class="sec-title">Key Scholarship on Bhutan's Highlands</h2>
+            <p class="sec-desc">A curated bibliography of foundational and recent academic works covering highland ecology, cultural anthropology, oral tradition, and Buddhist cosmology in Bhutan. Arranged thematically for ease of research.</p>
+
+            <div class="ref-list">
+
+                <div class="ref-card">
+                    <div class="ref-num">01</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book · Anthropology</p>
+                        <p class="ref-title">Gross National Happiness: The Bhutanese Philosophy of Development</p>
+                        <p class="ref-author">Karma Ura &amp; Karma Galay (Eds.)</p>
+                        <p class="ref-detail">Centre for Bhutan Studies, Thimphu · 2004 · ISBN 99936-14-07-5</p>
+                    </div>
+                    <span class="ref-badge badge-book">Book</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">02</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Journal Article · Ecology</p>
+                        <p class="ref-title">High-Altitude Pastoral Systems and Yak Herding in the Eastern Himalayas</p>
+                        <p class="ref-author">Phuntsho Namgyel &amp; D.R. Dahal</p>
+                        <p class="ref-detail">Mountain Research and Development, Vol. 28(2), pp. 152–161 · 2008</p>
+                    </div>
+                    <span class="ref-badge badge-journal">Journal</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">03</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book · Religion &amp; Culture</p>
+                        <p class="ref-title">The Raven Crown: The Origins of Buddhist Monarchy in Bhutan</p>
+                        <p class="ref-author">Michael Aris</p>
+                        <p class="ref-detail">Serindia Publications, London · 1994 · ISBN 0-906026-33-5</p>
+                    </div>
+                    <span class="ref-badge badge-book">Book</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">04</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Government Report · Conservation</p>
+                        <p class="ref-title">Bhutan Biodiversity Action Plan 2014: Protecting Highland Ecosystems</p>
+                        <p class="ref-author">Ministry of Agriculture and Forests, Royal Government of Bhutan</p>
+                        <p class="ref-detail">RGOB / UNDP Publication · Thimphu · 2014</p>
+                    </div>
+                    <span class="ref-badge badge-report">Report</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">05</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book · Oral Tradition</p>
+                        <p class="ref-title">Oral Traditions of the Himalayan Kingdoms: Myth, Memory, and Landscape</p>
+                        <p class="ref-author">Françoise Pommaret</p>
+                        <p class="ref-detail">CNRS Éditions, Paris · 2007 · ISBN 978-2-271-06440-2</p>
+                    </div>
+                    <span class="ref-badge badge-book">Book</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">06</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Journal Article · Climate</p>
+                        <p class="ref-title">Glacial Retreat and Sacred Lakes: Environmental Change in Bhutan's West</p>
+                        <p class="ref-author">Tshering Wangchuk &amp; Sonam Penjor</p>
+                        <p class="ref-detail">Journal of Himalayan Ecology, Vol. 5(1), pp. 33–48 · 2021</p>
+                    </div>
+                    <span class="ref-badge badge-journal">Journal</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">07</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book Chapter · Cosmology</p>
+                        <p class="ref-title">Water Spirits and Sacred Ecology in Western Bhutan</p>
+                        <p class="ref-author">Karma Phuntsho</p>
+                        <p class="ref-detail">In: Sacred Waters of the Himalayas (Ed. Adrian Ivakhiv), Oxford University Press · 2017</p>
+                    </div>
+                    <span class="ref-badge badge-chapter">Chapter</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">08</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book · History</p>
+                        <p class="ref-title">The History of Bhutan</p>
+                        <p class="ref-author">Karma Phuntsho</p>
+                        <p class="ref-detail">Random House India · 2013 · ISBN 978-81-8400-486-3</p>
+                    </div>
+                    <span class="ref-badge badge-book">Book</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">09</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Thesis · Ethnography</p>
+                        <p class="ref-title">Transhumant Identities: Yak Herders and the Politics of Belonging in Haa Dzongkhag</p>
+                        <p class="ref-author">Tashi Pelden — M.A. Thesis, Royal Thimphu College</p>
+                        <p class="ref-detail">RTC Institutional Repository · Thimphu · 2022</p>
+                    </div>
+                    <span class="ref-badge badge-thesis">Thesis</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">10</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Report · Development</p>
+                        <p class="ref-title">Livelihoods, Climate Adaptation and Pastoral Communities in Bhutan</p>
+                        <p class="ref-author">UNDP Bhutan Country Office</p>
+                        <p class="ref-detail">UNDP Bhutan · Thimphu · 2020 · Available open access</p>
+                    </div>
+                    <span class="ref-badge badge-report">Report</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">11</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Journal Article · Religion</p>
+                        <p class="ref-title">Tsechu Festivals as Living Ritual Archives: Performance, Memory and Community in Bhutan</p>
+                        <p class="ref-author">Dorji Penjore</p>
+                        <p class="ref-detail">Journal of Bhutan Studies, Vol. 16, pp. 1–28 · Centre for Bhutan Studies · 2007</p>
+                    </div>
+                    <span class="ref-badge badge-journal">Journal</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">12</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book · Ecology</p>
+                        <p class="ref-title">Tibetan Plateau and Himalayan Rangeland Management: Yak and Pastoral Systems</p>
+                        <p class="ref-author">D. Miller &amp; S. Craig (Eds.)</p>
+                        <p class="ref-detail">FAO Animal Production and Health Paper No. 152, Rome · 2012</p>
+                    </div>
+                    <span class="ref-badge badge-book">Book</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">13</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Journal Article · Anthropology</p>
+                        <p class="ref-title">Ritual Landscapes and Sacred Geography in the Western Himalayas</p>
+                        <p class="ref-author">Charles Ramble</p>
+                        <p class="ref-detail">Himalaya: The Journal of the Association for Nepal and Himalayan Studies, Vol. 19(2) · 1999</p>
+                    </div>
+                    <span class="ref-badge badge-journal">Journal</span>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-num">14</div>
+                    <div class="ref-body">
+                        <p class="ref-type">Book · Visual Culture</p>
+                        <p class="ref-title">Bhutan: Mountain Fortress of the Gods</p>
+                        <p class="ref-author">Christian Schicklgruber &amp; Françoise Pommaret (Eds.)</p>
+                        <p class="ref-detail">Serindia Publications, London · 1997 · ISBN 0-906026-45-9</p>
+                    </div>
+                    <span class="ref-badge badge-book">Book</span>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ════════════ EXTERNAL LINKS ════════════ -->
+        <section id="links">
+            <p class="sec-label">✦ External Links</p>
+            <h2 class="sec-title">Institutions &amp; Online Databases</h2>
+            <p class="sec-desc">Key organisations, open-access journals, digital archives, and institutional portals for Bhutan studies, Himalayan ecology, and Buddhist cultural heritage.</p>
+
+            <div class="link-grid">
+
+                <div class="link-card">
+                    <div class="lc-icon green">🏛️</div>
+                    <p class="lc-type">Research Institute</p>
+                    <p class="lc-title">Centre for Bhutan &amp; GNH Studies</p>
+                    <p class="lc-desc">Bhutan's premier research institution — home to the Journal of Bhutan Studies and the GNH Survey data archive.</p>
+                    <p class="lc-source">bhutanstudies.org.bt</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon blue">🌏</div>
+                    <p class="lc-type">Open Access Journal</p>
+                    <p class="lc-title">Journal of Bhutan Studies</p>
+                    <p class="lc-desc">Peer-reviewed articles on Bhutanese history, ecology, religion, and social science — all freely accessible online.</p>
+                    <p class="lc-source">bhutanstudies.org.bt/journal</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon gold">🏔️</div>
+                    <p class="lc-type">Research Network</p>
+                    <p class="lc-title">ICIMOD — Hindu Kush Himalaya</p>
+                    <p class="lc-desc">International Centre for Integrated Mountain Development — research on highland livelihoods, climate, and natural resources across the Himalayas.</p>
+                    <p class="lc-source">icimod.org</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon purple">📚</div>
+                    <p class="lc-type">Digital Archive</p>
+                    <p class="lc-title">BDRC — Buddhist Digital Resource Centre</p>
+                    <p class="lc-desc">The world's largest digital library of Tibetan and Himalayan Buddhist texts, accessible in multiple scripts and languages.</p>
+                    <p class="lc-source">bdrc.io</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon green">🌱</div>
+                    <p class="lc-type">Government Portal</p>
+                    <p class="lc-title">Bhutan Ministry of Agriculture &amp; Forests</p>
+                    <p class="lc-desc">Official reports on biodiversity, conservation policy, and highland rangeland management from the Royal Government of Bhutan.</p>
+                    <p class="lc-source">moaf.gov.bt</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon blue">🗺️</div>
+                    <p class="lc-type">Mapping Tool</p>
+                    <p class="lc-title">UNDP Bhutan Country Programme</p>
+                    <p class="lc-desc">Development reports, climate adaptation projects, and community livelihoods data for Bhutan's highland regions, including Haa and Wangdue.</p>
+                    <p class="lc-source">undp.org/bhutan</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon gold">🎓</div>
+                    <p class="lc-type">Academic Institution</p>
+                    <p class="lc-title">Royal Thimphu College Library</p>
+                    <p class="lc-desc">RTC's institutional repository — theses, field reports, and research papers by faculty and students on Bhutanese highland communities.</p>
+                    <p class="lc-source">rtc.bt/library</p>
+                </div>
+
+                <div class="link-card">
+                    <div class="lc-icon purple">🔬</div>
+                    <p class="lc-type">Research Portal</p>
+                    <p class="lc-title">Himalayan Research Bulletin (HRB)</p>
+                    <p class="lc-desc">Open-access publication covering archaeology, ethnography, ecology and religion across the Himalayan arc including Bhutan, Nepal and Sikkim.</p>
+                    <p class="lc-source">himalayan-research-bulletin.org</p>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- PULL QUOTE -->
+        <div class="pull-quote">
+            <blockquote>"To understand Bhutan's highlands, one must listen not only to the scholars but to the wind that moves through the prayer flags — and to the herders who know how to read it."</blockquote>
+            <span class="pull-attr">— Fieldwork Reflection, Highland Heritage Project · Haa Valley, 2024</span>
+        </div>
+
+        <hr class="sec-divider">
+
+        <!-- ════════════ FIELD NOTES TIMELINE ════════════ -->
+        <section id="fieldnotes">
+            <p class="sec-label">✦ Field Notes</p>
+            <h2 class="sec-title">A Timeline of the Archive</h2>
+            <p class="sec-desc">Key milestones from the Highland Heritage Project's field seasons — documenting when and how these stories were recorded, and with whom.</p>
+
+            <div class="timeline">
+
+                <div class="tl-item">
+                    <p class="tl-date">June 2023</p>
+                    <p class="tl-title">Preliminary Fieldwork — Haa Valley</p>
+                    <p class="tl-body">The project team conducted initial scoping visits to Haa Dzongkhag, meeting with village elders, local government officials, and the Haa Dzongkhag Agriculture Office to identify community partners and sacred sites for documentation.</p>
+                    <span class="tl-tag">Haa</span>
+                    <span class="tl-tag">Scoping</span>
+                </div>
+
+                <div class="tl-item">
+                    <p class="tl-date">September–October 2023</p>
+                    <p class="tl-title">Royal Highland Festival — Laya Documentation</p>
+                    <p class="tl-body">A team of RTC students and faculty attended the Royal Highland Festival in Laya during September 2023. Film footage, photographic documentation, and oral history interviews were conducted with participating herding families, festival organisers, and yak breeders.</p>
+                    <span class="tl-tag">Laya</span>
+                    <span class="tl-tag">Film</span>
+                    <span class="tl-tag">Festival</span>
+                </div>
+
+                <div class="tl-item">
+                    <p class="tl-date">December 2023</p>
+                    <p class="tl-title">Sephu Fieldwork — Tshonapata Sacred Lake</p>
+                    <p class="tl-body">Three weeks of ethnographic fieldwork in Sephu, Wangdue Phodrang, focused on the sacred lake of Tshonapata. The team recorded oral histories from elder community members describing the lake's cosmological significance and the lu (water spirit) rituals performed seasonally. Community consent and ethics protocols were observed throughout.</p>
+                    <span class="tl-tag">Sephu</span>
+                    <span class="tl-tag">Vignette</span>
+                    <span class="tl-tag">Oral History</span>
+                </div>
+
+                <div class="tl-item">
+                    <p class="tl-date">March 2024</p>
+                    <p class="tl-title">Thimphu Sacred Rituals Documentation</p>
+                    <p class="tl-body">Photo essay fieldwork documenting the sacred ritual practices of Thimphu — including the Tsechu mask dance festival, butter lamp offerings, and monastery life. Interviews were conducted with monks and lay practitioners about the intersection of daily life and Buddhist cosmology.</p>
+                    <span class="tl-tag">Thimphu</span>
+                    <span class="tl-tag">Photo Essay</span>
+                    <span class="tl-tag">Ritual</span>
+                </div>
+
+                <div class="tl-item">
+                    <p class="tl-date">June–July 2024</p>
+                    <p class="tl-title">Haa Cliffside Temple &amp; Transhumance Routes</p>
+                    <p class="tl-body">Return visit to Haa to document the seasonal transhumance routes used by yak herding families migrating between lowland winter pastures and high-altitude summer grazing grounds. The documentary film "Voices of the Herders" was completed during this season, and the Jungney cliffside temple was photographed in detail.</p>
+                    <span class="tl-tag">Haa</span>
+                    <span class="tl-tag">Film</span>
+                    <span class="tl-tag">Transhumance</span>
+                </div>
+
+                <div class="tl-item">
+                    <p class="tl-date">January 2025</p>
+                    <p class="tl-title">Archive Launch — Highland Heritage Portal Goes Live</p>
+                    <p class="tl-body">The Highland Heritage of Bhutan digital archive was officially launched at Royal Thimphu College with a community screening and sharing event attended by participants from all three fieldwork locations. The portal is now publicly accessible for academic and educational use.</p>
+                    <span class="tl-tag">Launch</span>
+                    <span class="tl-tag">All Locations</span>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ════════════ GLOSSARY ════════════ -->
+        <section id="glossary">
+            <p class="sec-label">✦ Glossary</p>
+            <h2 class="sec-title">Dzongkha &amp; Cultural Terms</h2>
+            <p class="sec-desc">Key terms from Dzongkha, Tibetan, and Bhutanese cultural tradition that appear throughout this archive — with phonetic guides and contextual definitions.</p>
+
+            <div class="glossary-grid">
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Tshona</p>
+                    <p class="gloss-phonetic">tsho-na</p>
+                    <p class="gloss-def">A sacred lake or high-altitude body of water, often considered the dwelling place of water spirits (lu) and protected from human interference by both community law and Buddhist practice.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Lu</p>
+                    <p class="gloss-phonetic">lü</p>
+                    <p class="gloss-def">Water spirits or nāgas in Bhutanese cosmology — powerful non-human entities believed to inhabit rivers, lakes, and underground streams. Offerings and rituals are performed seasonally to maintain their favour and prevent ecological harm.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Tsechu</p>
+                    <p class="gloss-phonetic">tse-chu</p>
+                    <p class="gloss-def">An annual religious festival celebrated on the tenth day of the lunar month — featuring masked dances (Cham), sacred music, and large thangka displays. Tsechus are both spiritual events and important social gatherings for highland communities.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Dzongkhag</p>
+                    <p class="gloss-phonetic">dzong-kag</p>
+                    <p class="gloss-def">A district — Bhutan's primary administrative division, of which there are twenty. Each Dzongkhag is anchored by a dzong (fortress-monastery) and governed by a Dzongda (district governor).</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Yak</p>
+                    <p class="gloss-phonetic">yak / nor</p>
+                    <p class="gloss-def">The large bovid (Bos grunniens) central to Bhutanese highland life. Known locally as "nor" in Dzongkha, the yak provides milk, butter, meat, wool, and transport — and holds deep spiritual and cultural significance in highland communities.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Cham</p>
+                    <p class="gloss-phonetic">cham</p>
+                    <p class="gloss-def">Sacred masked dance performed by monks during Tsechu festivals. Each dance enacts episodes from Buddhist cosmology — typically the subjugation of evil spirits and the triumph of dharma — and serves as a visual teaching for lay communities.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Lungta</p>
+                    <p class="gloss-phonetic">lung-ta</p>
+                    <p class="gloss-def">Literally "wind horse" — the prayer flags strung across mountain passes, ridgelines, and bridges throughout Bhutan. Each flag carries prayers and mantras which are "carried" on the wind to benefit all beings in the surrounding landscape.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Terma</p>
+                    <p class="gloss-phonetic">ter-ma</p>
+                    <p class="gloss-def">Hidden treasures — sacred texts, objects, or teachings concealed by Guru Rinpoche (Padmasambhava) and other masters throughout the Himalayan landscape, to be discovered by destined treasure-revealers (tertöns) in future generations.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Driglam Namzha</p>
+                    <p class="gloss-phonetic">drig-lam nam-zha</p>
+                    <p class="gloss-def">Bhutan's official code of etiquette and traditional dress — governing behaviour in public spaces, dzongs, and official settings. It mandates the wearing of the Gho (men's robe) and Kira (women's dress) in formal contexts.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Lhakhang</p>
+                    <p class="gloss-phonetic">lha-kang</p>
+                    <p class="gloss-def">A temple or shrine — often a small community place of worship distinct from a monastery. Many high-altitude communities in Haa and Sephu maintain lhakhangs associated with local protective deities and ancestral lineages.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Genyen</p>
+                    <p class="gloss-phonetic">gen-yen</p>
+                    <p class="gloss-def">Local protective spirits or earth-lords — powerful territorial deities tied to specific mountains, valleys, and villages in Bhutan. Unlike universal Buddhist deities, genyen are localised and require community-specific rituals and offerings.</p>
+                </div>
+
+                <div class="gloss-item">
+                    <p class="gloss-term">Tshechu Thongdroel</p>
+                    <p class="gloss-phonetic">tshe-chu tong-droel</p>
+                    <p class="gloss-def">A large sacred thangka (scroll painting) — typically depicting Guru Rinpoche — unfurled at dawn on the final day of a Tsechu festival. Viewing the Thongdroel is believed to grant liberation from the cycle of rebirth.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ════════════ DOWNLOADS ════════════ -->
+        <section id="downloads">
+            <p class="sec-label">✦ Downloads</p>
+            <h2 class="sec-title">Teaching &amp; Research Materials</h2>
+            <p class="sec-desc">Printable guides, citation sheets, and classroom resources produced by the Highland Heritage Project team for academic and educational use.</p>
+
+            <div class="dl-grid">
+
+                <div class="dl-card">
+                    <div class="dl-icon">📄</div>
+                    <p class="dl-label">PDF · Teaching</p>
+                    <p class="dl-title">Introduction to Bhutanese Highland Culture — Classroom Guide</p>
+                    <p class="dl-meta">4 pages · RTC · 2024</p>
+                    <span class="dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Download PDF
+                    </span>
+                </div>
+
+                <div class="dl-card">
+                    <div class="dl-icon">📋</div>
+                    <p class="dl-label">PDF · Research</p>
+                    <p class="dl-title">Highland Heritage Project — Full Bibliography &amp; Citation Sheet</p>
+                    <p class="dl-meta">3 pages · RTC · 2025</p>
+                    <span class="dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Download PDF
+                    </span>
+                </div>
+
+                <div class="dl-card">
+                    <div class="dl-icon">🗺️</div>
+                    <p class="dl-label">Map · Locations</p>
+                    <p class="dl-title">Fieldwork Sites Map — Haa, Sephu &amp; Thimphu</p>
+                    <p class="dl-meta">Print-ready · A3 · 2024</p>
+                    <span class="dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Download Map
+                    </span>
+                </div>
+
+                <div class="dl-card">
+                    <div class="dl-icon">📖</div>
+                    <p class="dl-label">PDF · Glossary</p>
+                    <p class="dl-title">Dzongkha Cultural Glossary — Printable Student Edition</p>
+                    <p class="dl-meta">2 pages · RTC · 2025</p>
+                    <span class="dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Download PDF
+                    </span>
+                </div>
+
+                <div class="dl-card">
+                    <div class="dl-icon">🎓</div>
+                    <p class="dl-label">PDF · Curriculum</p>
+                    <p class="dl-title">Secondary School Lesson Plans — Bhutanese Highland Heritage</p>
+                    <p class="dl-meta">12 pages · RTC · 2025</p>
+                    <span class="dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Download PDF
+                    </span>
+                </div>
+
+                <div class="dl-card">
+                    <div class="dl-icon">📝</div>
+                    <p class="dl-label">Word Doc · Ethics</p>
+                    <p class="dl-title">Community Consent &amp; Fieldwork Ethics Protocol</p>
+                    <p class="dl-meta">6 pages · RTC · 2023</p>
+                    <span class="dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Download Doc
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer class="page-footer">
+    <p>© 2026 Highland Heritage Project · A Royal Thimphu College Initiative · Thimphu, Bhutan</p>
+</footer>
+
+<script>
+    /* Filter bar active state */
+    function setActive(el) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    /* Sidebar scroll-spy */
+    (function () {
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('#toc-nav a');
+
+        function updateActive() {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 150) current = sec.id;
+            });
+            tocLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', updateActive);
+        updateActive();
+    })();
+
+    /* Filter-bar active sync with scroll */
+    (function () {
+        const sections = document.querySelectorAll('section[id]');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function syncFilter() {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 150) current = sec.id;
+            });
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('href') === '#' + current) btn.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', syncFilter);
+        syncFilter();
+    })();
+</script>
+
+</body>
+</html>

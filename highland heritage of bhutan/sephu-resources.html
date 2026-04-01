@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sephu Resources — Highland Heritage of Bhutan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: #f3fbf6; color: #1b2e24; padding-top: 65px; }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: #1b4332;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6vw;
+            height: 65px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            flex-wrap: nowrap;
+        }
+        .navbar nav ul li { position: relative; }
+        .navbar nav ul li a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .navbar nav ul li a:hover { color: #52b788; }
+
+        /* Dropdown */
+        .navbar nav ul li.dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.6rem;
+            opacity: 0.6;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            background: #1b4332;
+            border: 1px solid rgba(82,183,136,0.25);
+            border-radius: 8px;
+            min-width: 175px;
+            padding: 0.4rem 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            z-index: 9999;
+        }
+        .dropdown-menu li a {
+            padding: 0.5rem 1rem;
+            font-size: 0.77rem;
+            color: rgba(255,255,255,0.8);
+            display: block;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+        .dropdown-menu li a:hover {
+            background: rgba(82,183,136,0.15);
+            color: #52b788;
+        }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+
+        /* ── BREADCRUMB BAR ── */
+        .breadcrumb-bar {
+            position: sticky;
+            top: 65px;
+            z-index: 900;
+            background: #1b4332;
+            border-bottom: 1px solid rgba(82, 183, 136, 0.2);
+            padding: 0 6vw;
+            display: flex;
+            align-items: center;
+            height: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+        }
+        .breadcrumb-bar ol {
+            list-style: none;
+            margin: 0; padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        .breadcrumb-bar ol li {
+            display: flex;
+            align-items: center;
+            font-size: 0.72rem;
+            font-weight: 500;
+        }
+        .breadcrumb-bar ol li + li::before {
+            content: '›';
+            margin: 0 8px;
+            color: rgba(82, 183, 136, 0.45);
+        }
+        .breadcrumb-bar ol li a {
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 0;
+            font-size: 0.72rem;
+        }
+        .breadcrumb-bar ol li a:hover { color: #52b788; }
+        .breadcrumb-bar ol li.bc-current {
+            color: #52b788;
+            font-weight: 600;
+        }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            position: relative;
+            height: 460px;
+            background:
+                linear-gradient(to bottom, rgba(27,67,50,0.72) 0%, rgba(27,67,50,0.38) 55%, #f3fbf6 100%),
+                url('images/sephu.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 6vw 3.5rem;
+        }
+        .page-hero-content { max-width: 680px; }
+        .page-hero .badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            color: #52b788;
+            margin-bottom: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .page-hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 600; color: #fff; line-height: 1.08; }
+        .page-hero h1 .serif { font-style: italic; font-weight: 300; color: #d8eadd; }
+        .page-hero p { margin-top: 1rem; color: rgba(255,255,255,0.75); font-size: 0.92rem; font-weight: 300; line-height: 1.75; }
+
+        /* ── LAYOUT ── */
+        .page-body {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 6vw 6rem;
+            gap: 3rem;
+        }
+        @media (max-width: 860px) { .page-body { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+        /* ── SIDEBAR ── */
+        .sidebar { position: sticky; top: 115px; align-self: start; }
+        .sidebar-label { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: #4a6358; margin-bottom: 1rem; font-weight: 600; }
+        .sidebar nav ul { list-style: none; }
+        .sidebar nav ul li { margin-bottom: 0.15rem; }
+        .sidebar nav ul li a {
+            display: block; padding: 0.48rem 0.85rem;
+            font-size: 0.8rem; color: #1b2e24;
+            text-decoration: none; border-left: 2px solid transparent;
+            transition: all 0.2s; border-radius: 0 6px 6px 0;
+        }
+        .sidebar nav ul li a:hover,
+        .sidebar nav ul li a.active {
+            border-left-color: #52b788;
+            color: #1b4332;
+            background: rgba(82,183,136,0.10);
+        }
+        .sidebar-nav-link { cursor: pointer !important; pointer-events: all !important; }
+        .sidebar hr { border: none; border-top: 1px solid #c8d8c4; margin: 1.4rem 0; }
+        .sidebar-tag-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .s-tag {
+            font-size: 0.65rem; padding: 0.22rem 0.55rem;
+            border: 1px solid #c8d8c4; border-radius: 100px;
+            color: #4a6358; cursor: pointer; transition: all 0.18s; background: transparent;
+        }
+        .s-tag:hover { border-color: #52b788; color: #1b4332; background: #f0f7f2; }
+
+        /* ── SECTION HEADERS ── */
+        .section-eyebrow { font-size: 0.63rem; letter-spacing: 0.22em; text-transform: uppercase; color: #52b788; margin-bottom: 0.55rem; font-weight: 600; }
+        .section-title { font-size: clamp(1.4rem, 2.8vw, 1.9rem); font-weight: 600; line-height: 1.2; margin-bottom: 0.5rem; color: #1b4332; }
+        .section-desc { font-size: 0.86rem; color: #4a6358; line-height: 1.8; margin-bottom: 2rem; max-width: 580px; }
+
+        /* ── INTRO BAND ── */
+        .intro-band {
+            background: #1b4332;
+            border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem;
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center;
+        }
+        @media (max-width: 640px) { .intro-band { grid-template-columns: 1fr; } }
+        .intro-band h2 { font-size: 1.65rem; font-weight: 600; color: #fff; line-height: 1.25; }
+        .intro-band h2 em { font-style: italic; font-weight: 300; color: #52b788; }
+        .intro-band p { font-size: 0.84rem; color: rgba(216,234,221,0.75); line-height: 1.82; margin-top: 0.8rem; }
+        .intro-stats { display: flex; gap: 2rem; justify-content: center; }
+        .stat-item { text-align: center; }
+        .stat-num { display: block; font-size: 2.2rem; font-weight: 600; color: #52b788; line-height: 1; }
+        .stat-label { display: block; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.35rem; }
+
+        /* ── RESOURCE CARDS ── */
+        .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.3rem; margin-bottom: 3.5rem; }
+        .resource-card {
+            background: #fff; border: 1px solid #c8d8c4; border-radius: 14px;
+            overflow: hidden; transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer; text-decoration: none; color: inherit; display: block;
+        }
+        .resource-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(27,67,50,0.12); }
+        .rc-thumb { height: 175px; position: relative; overflow: hidden; background: #1b4332; }
+        .rc-thumb img,
+        .rc-thumb video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+        .resource-card:hover .rc-thumb img,
+        .resource-card:hover .rc-thumb video { transform: scale(1.06); }
+        .rc-pill {
+            position: absolute; top: 10px; left: 10px;
+            font-size: 0.6rem; padding: 0.28rem 0.65rem; border-radius: 100px;
+            font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; z-index: 2;
+        }
+        .pill-film     { background: #1b4332; color: #fff; }
+        .pill-essay    { background: #52b788; color: #fff; }
+        .pill-vignette { background: #2d6a4f; color: #fff; }
+        .rc-body { padding: 1.2rem 1.35rem 1.5rem; }
+        .rc-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.6rem; }
+        .rc-tag { font-size: 0.6rem; padding: 0.18rem 0.5rem; border: 1px solid #c8d8c4; border-radius: 100px; color: #4a6358; }
+        .rc-title { font-size: 0.92rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.42rem; color: #1b4332; }
+        .rc-desc { font-size: 0.77rem; color: #4a6358; line-height: 1.68; margin-bottom: 1rem; }
+        .rc-cta { font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase; color: #2d6a4f; font-weight: 600; }
+
+        /* play overlay */
+        .play-over {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(27,67,50,0.2);
+            opacity: 0; transition: opacity 0.25s; z-index: 1;
+        }
+        .resource-card:hover .play-over { opacity: 1; }
+        .play-circle-sm {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.7);
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ── FEATURED QUOTE ── */
+        .featured-quote {
+            background: #1b4332; border-radius: 16px; padding: 3rem;
+            margin-bottom: 3.5rem; position: relative; overflow: hidden;
+        }
+        .featured-quote::before {
+            content: '"'; position: absolute; top: -0.5rem; left: 1.5rem;
+            font-size: 10rem; color: rgba(82,183,136,0.12); font-family: Georgia, serif;
+            line-height: 1; pointer-events: none;
+        }
+        .featured-quote blockquote {
+            font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 300; font-style: italic;
+            color: #d8eadd; line-height: 1.75; margin-bottom: 1.2rem; position: relative; z-index: 1;
+        }
+        .quote-attr { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #52b788; }
+
+        /* ── SECTION DIVIDER ── */
+        .sec-divider { border: none; border-top: 1px solid #c8d8c4; margin: 3rem 0; }
+
+        /* ── MAP PLACEHOLDER ── */
+        .map-placeholder {
+            background: #1b4332; border-radius: 16px; height: 300px;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 0.8rem; margin-bottom: 3.5rem;
+            border: 1px solid rgba(82,183,136,0.2);
+        }
+        .map-placeholder .map-icon { font-size: 3rem; opacity: 0.45; }
+        .map-placeholder p { font-size: 0.8rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+        /* ── FOOTER ── */
+        .page-footer {
+            text-align: center;
+            padding: 30px;
+            background: #14422e;
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════
+     NAVBAR
+     ══════════════════ -->
+<header class="navbar">
+    <a href="index.html" class="logo">Highland Heritage</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="index.html#about-section">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#about-section">Org Info</a></li>
+                    <li><a href="index.html#about-section">Mission</a></li>
+                    <li><a href="index.html#about-section">Vision</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" onclick="return false;">Locations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="haa-resources.html">Haa Resources</a></li>
+                    <li><a href="sephu-resources.html">Sephu Resources</a></li>
+                    <li><a href="thimphu-resources.html">Thimphu Resources</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#additional-resources">Additional Resources</a></li>
+            <li class="dropdown">
+                <a href="#" onclick="return false;">Themes</a>
+                <ul class="dropdown-menu">
+                    <li><a href="page-theme.html">Environment</a></li>
+                    <li><a href="index.html#theme-culture">Culture &amp; Identity</a></li>
+                    <li><a href="index.html#theme-cosmology">Cosmology</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#interactive-map">Interactive Map</a></li>
+            <li><a href="index.html#announcements">Announcements</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ══════════════════
+     PAGE HERO
+     ══════════════════ -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <span class="badge">✦ LOCATIONS · SEPHU VALLEY</span>
+        <h1>Sephu <br><span class="serif">Resources</span></h1>
+        <p>Films, photo essays, and ethnographic vignettes documenting<br>the landscapes, livelihoods, and living traditions of the Sephu region.</p>
+    </div>
+</section>
+
+<!-- ══════════════════
+     BREADCRUMB BAR — outside .page-body, right after hero
+     ══════════════════ -->
+<nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <ol>
+        <li><a href="index.html">⌂ Home</a></li>
+        <li><a href="sephu-resources.html">Sephu Resources</a></li>
+        <li class="bc-current" id="bc-last">Overview</li>
+    </ol>
+</nav>
+
+<!-- ══════════════════
+     PAGE BODY
+     ══════════════════ -->
+<div class="page-body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <p class="sidebar-label">✦ On This Page</p>
+        <nav id="toc-nav">
+            <ul>
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#film">Film</a></li>
+                <li><a href="#photo-essay">Photo Essay</a></li>
+                <li><a href="#vignette">Vignette</a></li>
+                <li><a href="#map">Location Map</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <p class="sidebar-label">Filter by Theme</p>
+        <div class="sidebar-tag-wrap">
+            <button class="s-tag">Environment</button>
+            <button class="s-tag">Culture</button>
+            <button class="s-tag">Cosmology</button>
+            <button class="s-tag">Landscape</button>
+            <button class="s-tag">Ritual</button>
+            <button class="s-tag">Oral Tradition</button>
+        </div>
+        <hr>
+        <p class="sidebar-label">Other Locations</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="haa-resources.html"
+                       class="sidebar-nav-link"
+                       onclick="window.location.href='haa-resources.html'; return false;">
+                        Haa Resources
+                    </a>
+                </li>
+                <li>
+                    <a href="thimphu-resources.html"
+                       class="sidebar-nav-link"
+                       onclick="window.location.href='thimphu-resources.html'; return false;">
+                        Thimphu Resources
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content-main">
+
+        <!-- INTRO BAND -->
+        <div class="intro-band" id="overview">
+            <div>
+                <h2>The Highlands<br>of <em>Sephu</em></h2>
+                <p>Located in the Wangdue Phodrang district of central Bhutan, the Sephu region is a high-altitude pastoral landscape where yak herding communities have maintained seasonal migration routes for generations. Surrounded by dense forests, glacial rivers, and sacred mountain peaks, Sephu's traditions reflect a deep ecological and cosmological relationship with the land. This archive features a film, a photo essay, and an ethnographic vignette from fieldwork in the region.</p>
+            </div>
+            <div class="intro-stats">
+                <div class="stat-item">
+                    <span class="stat-num">1</span>
+                    <span class="stat-label">Film</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">1</span>
+                    <span class="stat-label">Essay</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">1</span>
+                    <span class="stat-label">Vignette</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ FILM ══ -->
+        <section id="film">
+            <p class="section-eyebrow">✦ FILM</p>
+            <h2 class="section-title">Documentary Film</h2>
+            <p class="section-desc">A ground-level exploration of the Sephu highland landscape — its ecology, seasonal herding routes, and the pastoral communities who inhabit it across generations.</p>
+            <div class="resource-grid">
+                <a class="resource-card" href="sephu-film.html">
+                    <div class="rc-thumb">
+                        <img src="images/sephu-film-thumb.avif" alt="Sephu Documentary Film">
+                        <span class="rc-pill pill-film">▶ Film · 12:30</span>
+                        <div class="play-over">
+                            <div class="play-circle-sm">
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row">
+                            <span class="rc-tag">Sephu</span>
+                            <span class="rc-tag">Environment</span>
+                            <span class="rc-tag">Landscape</span>
+                        </div>
+                        <h3 class="rc-title">Seasonal Routes — The Herding Landscape of Sephu</h3>
+                        <p class="rc-desc">Following yak herding families along the ancient seasonal migration routes of Sephu, tracing the ecological and cultural rhythms that connect highland and lowland across the year.</p>
+                        <span class="rc-cta">Watch Full Film →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ══ PHOTO ESSAY ══ -->
+        <section id="photo-essay">
+            <p class="section-eyebrow">✦ PHOTO ESSAY</p>
+            <h2 class="section-title">Photo Essay</h2>
+            <p class="section-desc">A visual journey through the high-altitude meadows and forest edges of Sephu — where the lives of herders, animals, and landscape intertwine across the seasons.</p>
+            <div class="resource-grid">
+                <a class="resource-card" href="sephu-photo-essay.html">
+                    <div class="rc-thumb">
+                        <img src="images/sephu-essay-thumb.avif" alt="Sephu Photo Essay">
+                        <span class="rc-pill pill-essay">⬡ Essay · 4 photos</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row">
+                            <span class="rc-tag">Sephu</span>
+                            <span class="rc-tag">Culture</span>
+                            <span class="rc-tag">Landscape</span>
+                        </div>
+                        <h3 class="rc-title">Pastures and People — Life in the Sephu Highlands</h3>
+                        <p class="rc-desc">A visual portrait of the herding communities of Sephu — their seasonal camps, sacred landmarks, and the intimate relationship between pastoral life and the mountain environment.</p>
+                        <span class="rc-cta">View Full Essay →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- FEATURED QUOTE -->
+        <div class="featured-quote">
+            <blockquote>"When the snow melts and the passes open, we follow the yaks upward — we have done this since before anyone can remember. The mountain calls us."</blockquote>
+            <span class="quote-attr">— Karma Wangchuk, Yak Herder, Sephu · Recorded 2024</span>
+        </div>
+
+        <!-- ══ VIGNETTE ══ -->
+        <section id="vignette">
+            <p class="section-eyebrow">✦ VIGNETTE</p>
+            <h2 class="section-title">Ethnographic Vignette</h2>
+            <p class="section-desc">A short narrative piece on the sacred mountain spirits of Sephu — their role in herding cosmology, the rituals that honour them, and the oral traditions that keep their stories alive.</p>
+            <div class="resource-grid">
+                <a class="resource-card" href="sephu-vignette.html">
+                    <div class="rc-thumb">
+                        <img src="images/sephu-vignette-thumb.avif" alt="Sephu Vignette">
+                        <span class="rc-pill pill-vignette">◈ Vignette · 7 min read</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row">
+                            <span class="rc-tag">Sephu</span>
+                            <span class="rc-tag">Cosmology</span>
+                            <span class="rc-tag">Oral History</span>
+                        </div>
+                        <h3 class="rc-title">The Mountain Spirits of Sephu</h3>
+                        <p class="rc-desc">An ethnographic vignette on the local deities and mountain spirits that govern life and livestock in the Sephu highlands — the rituals performed before migration, and the oral histories that bind community to place.</p>
+                        <span class="rc-cta">Read Vignette →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- MAP -->
+        <section id="map">
+            <p class="section-eyebrow">✦ LOCATION</p>
+            <h2 class="section-title">Sephu on the Map</h2>
+            <p class="section-desc">Situating the fieldwork sites, seasonal migration routes, and community locations documented in this archive.</p>
+            <div class="map-placeholder">
+                <span class="map-icon">🗺️</span>
+                <p>Interactive map coming soon</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<footer class="page-footer">
+    <p>© 2026 Highland Heritage Project · A Royal Thimphu College Initiative</p>
+</footer>
+
+<script>
+    (function () {
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const tocLinks = document.querySelectorAll('#toc-nav a');
+        const bcEl = document.getElementById('bc-last');
+
+        const bcLabels = {
+            overview:     'Overview',
+            film:         '▶ Film',
+            'photo-essay':'⬡ Photo Essay',
+            vignette:     '◈ Vignette',
+            map:          'Location Map'
+        };
+
+        function updateActive() {
+            let current = 'overview';
+            sections.forEach(function (sec) {
+                if (window.scrollY >= sec.offsetTop - 140) {
+                    current = sec.id;
+                }
+            });
+
+            // update sidebar active link
+            tocLinks.forEach(function (a) {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+
+            // update breadcrumb last crumb
+            if (bcEl && bcLabels[current]) {
+                bcEl.textContent = bcLabels[current];
+            }
+        }
+
+        window.addEventListener('scroll', updateActive);
+        updateActive();
+    })();
+</script>
+
+</body>
+</html>

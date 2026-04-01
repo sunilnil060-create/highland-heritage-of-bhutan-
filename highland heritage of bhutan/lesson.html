@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Detail — Highland Heritage of Bhutan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+        --green-dark:  #1b4332;
+        --green-mid:   #2d6a4f;
+        --green-soft:  #52b788;
+        --green-pale:  #f3fbf6;
+        --green-light: #d8eadd;
+        --green-border:#c8d8c4;
+        --text-dark:   #1b2e24;
+        --text-mid:    #4a6358;
+        --amber:       #c9941a;
+        --amber-soft:  #fdf3dc;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--green-pale);
+        color: var(--text-dark);
+        padding-top: 65px;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        background: var(--green-dark);
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 6vw; height: 65px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .logo { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 0.03em; text-decoration: none; }
+    .navbar nav ul { list-style: none; display: flex; align-items: center; gap: 0.1rem; }
+    .navbar nav ul li { position: relative; }
+    .navbar nav ul li a {
+        display: block; padding: 0.5rem 0.75rem; font-size: 0.78rem;
+        color: rgba(255,255,255,0.82); text-decoration: none;
+        font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s; white-space: nowrap;
+    }
+    .navbar nav ul li a:hover { color: var(--green-soft); }
+    .navbar nav ul li.dropdown > a::after { content: ' ▾'; font-size: 0.6rem; opacity: 0.6; }
+    .dropdown-menu {
+        display: none; position: absolute; top: calc(100% + 4px); left: 0;
+        background: var(--green-dark); border: 1px solid rgba(82,183,136,0.25);
+        border-radius: 8px; min-width: 175px; padding: 0.4rem 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 9999;
+    }
+    .dropdown-menu li a { padding: 0.5rem 1rem; font-size: 0.77rem; }
+    .dropdown-menu li a:hover { background: rgba(82,183,136,0.15); color: var(--green-soft); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .btn-nav {
+        background: var(--green-soft) !important; color: var(--green-dark) !important;
+        border-radius: 100px; padding: 0.42rem 1rem !important;
+        font-weight: 600 !important; font-size: 0.75rem !important;
+    }
+
+    /* ── HERO ── */
+    .detail-hero {
+        background: linear-gradient(135deg, #0e2820 0%, var(--green-dark) 60%, var(--green-mid) 100%);
+        padding: 4rem 8% 3.5rem;
+        position: relative; overflow: hidden;
+    }
+    .detail-hero::before {
+        content: ''; position: absolute; top: -80px; right: -80px;
+        width: 400px; height: 400px;
+        border: 1px solid rgba(82,183,136,0.1); border-radius: 50%;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+    .back-link {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        font-size: 0.72rem; color: var(--green-soft); text-decoration: none;
+        font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+        margin-bottom: 1.8rem; transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 0.85rem; }
+    .hero-meta {
+        display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+    .hero-badge {
+        font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--green-soft); font-weight: 600;
+        background: rgba(82,183,136,0.12);
+        border: 1px solid rgba(82,183,136,0.3);
+        padding: 0.25rem 0.7rem; border-radius: 100px;
+    }
+    .hero-plan-num {
+        font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+        color: rgba(255,255,255,0.4); font-weight: 500;
+    }
+    .detail-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        font-weight: 700; color: #fff; line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+    .detail-hero h1 em { font-style: italic; font-weight: 400; color: var(--green-soft); }
+    .detail-hero p {
+        font-size: 0.9rem; color: rgba(255,255,255,0.65);
+        line-height: 1.85; max-width: 600px; margin-bottom: 2rem;
+    }
+    .hero-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .hero-tag {
+        font-size: 0.6rem; padding: 0.25rem 0.7rem;
+        border: 1px solid rgba(82,183,136,0.3); border-radius: 100px;
+        color: rgba(255,255,255,0.6);
+    }
+
+    /* ── LESSON SELECTOR TABS ── */
+    .lesson-tabs {
+        background: var(--green-light);
+        border-bottom: 1px solid var(--green-border);
+        padding: 0 8%;
+        display: flex; gap: 0; overflow-x: auto;
+        position: sticky; top: 65px; z-index: 100;
+    }
+    .lesson-tab {
+        font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+        padding: 1rem 1.4rem; border: none; background: none;
+        color: var(--text-mid); cursor: pointer; border-bottom: 3px solid transparent;
+        transition: all 0.2s; white-space: nowrap; font-family: 'Poppins', sans-serif;
+    }
+    .lesson-tab:hover { color: var(--green-dark); }
+    .lesson-tab.active {
+        color: var(--green-dark); font-weight: 600;
+        border-bottom-color: var(--green-soft);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .detail-body {
+        max-width: 1200px; margin: 0 auto;
+        padding: 3rem 8% 6rem;
+        display: grid; grid-template-columns: 1fr 320px;
+        gap: 3rem; align-items: start;
+    }
+    @media (max-width: 900px) { .detail-body { grid-template-columns: 1fr; } }
+
+    /* ── LEFT CONTENT ── */
+    .lesson-content { min-width: 0; }
+
+    /* Lesson panel (shown/hidden by tabs) */
+    .lesson-panel { display: none; }
+    .lesson-panel.active { display: block; animation: fadeUp 0.4s ease both; }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-section { margin-bottom: 2.5rem; }
+    .content-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem; font-weight: 700; color: var(--green-dark);
+        margin-bottom: 0.8rem;
+    }
+    .content-section p {
+        font-size: 0.86rem; color: var(--text-mid); line-height: 1.9;
+        margin-bottom: 0.8rem;
+    }
+
+    /* Objectives list */
+    .objectives-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .objectives-list li {
+        display: flex; align-items: flex-start; gap: 0.8rem;
+        font-size: 0.84rem; color: var(--text-mid); line-height: 1.7;
+    }
+    .obj-icon {
+        width: 22px; height: 22px; border-radius: 50%;
+        background: rgba(82,183,136,0.15); flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.65rem; color: var(--green-soft); margin-top: 2px;
+    }
+
+    /* Session cards */
+    .sessions-list { display: flex; flex-direction: column; gap: 1rem; }
+    .session-card {
+        background: #fff; border: 1px solid var(--green-border);
+        border-radius: 14px; padding: 1.4rem 1.6rem;
+        display: grid; grid-template-columns: 52px 1fr;
+        gap: 1rem; align-items: start;
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .session-card:hover { box-shadow: 0 8px 28px rgba(27,67,50,0.09); transform: translateY(-2px); }
+    .session-num {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem; font-weight: 700; color: var(--green-light);
+        line-height: 1; text-align: center;
+    }
+    .session-info h4 {
+        font-size: 0.9rem; font-weight: 600; color: var(--green-dark);
+        margin-bottom: 0.35rem;
+    }
+    .session-info p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.7; }
+    .session-info .session-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .session-info .session-tag {
+        font-size: 0.58rem; padding: 0.15rem 0.5rem;
+        border: 1px solid var(--green-border); border-radius: 100px; color: var(--text-mid);
+    }
+
+    /* Discussion questions */
+    .questions-list { display: flex; flex-direction: column; gap: 0.9rem; }
+    .question-item {
+        background: #fff; border: 1px solid var(--green-border);
+        border-left: 4px solid var(--green-soft);
+        border-radius: 0 12px 12px 0;
+        padding: 1rem 1.4rem;
+    }
+    .question-item p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.75; }
+    .question-item .q-num {
+        font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+        color: var(--green-soft); font-weight: 600; margin-bottom: 0.3rem;
+    }
+
+    /* Assessment */
+    .assessment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .assessment-grid { grid-template-columns: 1fr; } }
+    .assessment-box {
+        background: #fff; border: 1px solid var(--green-border);
+        border-radius: 14px; padding: 1.3rem 1.4rem;
+    }
+    .assessment-box h4 { font-size: 0.82rem; font-weight: 600; color: var(--green-dark); margin-bottom: 0.4rem; }
+    .assessment-box p { font-size: 0.77rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* Section divider */
+    .sec-divider { border: none; border-top: 1px solid var(--green-border); margin: 2.5rem 0; }
+
+    /* ── MEDIA RESOURCES PANEL ── */
+    .media-panel-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .media-resource-card {
+        background: #fff;
+        border: 1px solid var(--green-border);
+        border-radius: 18px; overflow: hidden;
+        text-decoration: none; color: inherit;
+        transition: transform 0.25s, box-shadow 0.25s;
+        display: block;
+    }
+    .media-resource-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(27,67,50,0.12);
+    }
+    .mrc-thumb {
+        height: 140px;
+        background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2.5rem; position: relative;
+    }
+    .mrc-thumb .mrc-type-pill {
+        position: absolute; bottom: 10px; left: 12px;
+        font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+        color: #fff; font-weight: 600;
+        background: rgba(0,0,0,0.4);
+        border-radius: 100px; padding: 0.2rem 0.6rem;
+        backdrop-filter: blur(4px);
+    }
+    .mrc-body { padding: 1.1rem 1.3rem; }
+    .mrc-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--green-dark); margin-bottom: 0.35rem; line-height: 1.35; }
+    .mrc-body p { font-size: 0.74rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 0.8rem; }
+    .mrc-cta {
+        font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--green-soft); font-weight: 600;
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        transition: gap 0.2s;
+    }
+    .media-resource-card:hover .mrc-cta { gap: 0.7rem; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .sidebar-card {
+        background: #fff; border: 1px solid var(--green-border);
+        border-radius: 18px; padding: 1.5rem;
+    }
+    .sidebar-card h3 {
+        font-size: 0.78rem; font-weight: 600; color: var(--green-dark);
+        letter-spacing: 0.08em; text-transform: uppercase;
+        margin-bottom: 1rem; padding-bottom: 0.7rem;
+        border-bottom: 1px solid var(--green-border);
+    }
+    .info-row {
+        display: flex; justify-content: space-between; align-items: flex-start;
+        padding: 0.5rem 0; border-bottom: 1px solid #f0f7f2;
+        font-size: 0.78rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { color: var(--text-mid); font-weight: 400; }
+    .info-value { color: var(--green-dark); font-weight: 600; text-align: right; max-width: 55%; }
+
+    .download-btn-full {
+        display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        background: var(--green-dark); color: #fff;
+        padding: 0.85rem; border-radius: 12px;
+        font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+        text-decoration: none; margin-top: 1rem;
+        transition: background 0.2s, transform 0.2s;
+    }
+    .download-btn-full:hover { background: var(--green-mid); transform: translateY(-2px); }
+
+    /* Related plans in sidebar */
+    .related-plan {
+        display: flex; align-items: center; gap: 0.8rem;
+        padding: 0.6rem 0; border-bottom: 1px solid #f0f7f2;
+        text-decoration: none; color: inherit;
+        transition: padding-left 0.2s;
+    }
+    .related-plan:last-child { border-bottom: none; }
+    .related-plan:hover { padding-left: 4px; }
+    .rp-icon {
+        width: 36px; height: 36px; border-radius: 10px;
+        background: var(--green-pale);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1rem; flex-shrink: 0;
+    }
+    .rp-info { min-width: 0; }
+    .rp-info span { display: block; font-size: 0.58rem; color: var(--text-mid); margin-bottom: 0.15rem; }
+    .rp-info strong { display: block; font-size: 0.76rem; color: var(--green-dark); line-height: 1.3; }
+
+    /* ── LESSON SWITCHER CARDS (visible per tab) ── */
+    .eyebrow {
+        font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--green-soft); font-weight: 600; margin-bottom: 0.4rem; display: block;
+    }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <a href="index.html" class="logo">Highland Heritage</a>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="index.html#about-portal">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#about-portal">Org Info</a></li>
+                    <li><a href="index.html#about-portal">Mission</a></li>
+                    <li><a href="index.html#about-portal">Vision</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Locations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="haa-resources.html">Haa Resources</a></li>
+                    <li><a href="sephu-resources.html">Sephu Resources</a></li>
+                    <li><a href="thimphu-resources.html">Thimphu Resources</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#additional-resources">Additional Resources</a></li>
+            <li class="dropdown">
+                <a href="#">Themes</a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#theme-environment">Environment</a></li>
+                    <li><a href="index.html#theme-culture">Culture &amp; Identity</a></li>
+                    <li><a href="index.html#theme-cosmology">Cosmology</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#interactive-map">Interactive Map</a></li>
+            <li><a href="index.html#announcements">Announcements</a></li>
+           
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="detail-hero" id="lessonHero">
+    <div class="hero-inner">
+        <a href="lesson-plans.html" class="back-link">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to All Lesson Plans
+        </a>
+        <div class="hero-meta">
+            <span class="hero-badge" id="heroBadgeTheme">Environment</span>
+            <span class="hero-plan-num" id="heroPlanNum">Plan 01 · 5 Sessions</span>
+        </div>
+        <h1 id="heroTitle">Highland Ecology &amp; the Yak <em>Herding Calendar</em></h1>
+        <p id="heroDesc">A multi-session lesson exploring the seasonal migration patterns of yak herding communities in Haa and Sephu — integrating ecology, geography, and oral history through film and field testimonies.</p>
+        <div class="hero-tags" id="heroTags">
+            <span class="hero-tag">Environment</span>
+            <span class="hero-tag">Haa</span>
+            <span class="hero-tag">Sephu</span>
+            <span class="hero-tag">Grades 9–12</span>
+            <span class="hero-tag">Film + Oral History</span>
+        </div>
+    </div>
+</section>
+
+<!-- LESSON TABS -->
+<div class="lesson-tabs" id="lessonTabs">
+    <button class="lesson-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="lesson-tab" onclick="switchTab('sessions')">Session Guide</button>
+    <button class="lesson-tab" onclick="switchTab('discussion')">Discussion Questions</button>
+    <button class="lesson-tab" onclick="switchTab('assessment')">Assessment</button>
+    <button class="lesson-tab" onclick="switchTab('media')">Linked Media</button>
+</div>
+
+<!-- MAIN BODY -->
+<div class="detail-body">
+
+    <!-- LEFT: LESSON CONTENT -->
+    <div class="lesson-content">
+
+        <!-- OVERVIEW PANEL -->
+        <div class="lesson-panel active" id="panel-overview">
+            <div class="content-section">
+                <span class="eyebrow">✦ LESSON OVERVIEW</span>
+                <h2 id="overviewTitle">About This Lesson</h2>
+                <p id="overviewBody1">This multi-session lesson invites students to explore the seasonal migration patterns of yak herding communities in Haa and Sephu. Through documentary film footage, elder testimonies, and mapping activities, students build a rich understanding of highland ecology as it is lived and known by its communities.</p>
+                <p id="overviewBody2">Cross-curricular connections link environmental science with social studies, geography, and oral history methodology. The lesson emphasises the role of traditional ecological knowledge as a form of expertise, challenging students to think critically about how knowledge is produced and preserved.</p>
+            </div>
+
+            <hr class="sec-divider">
+
+            <div class="content-section">
+                <span class="eyebrow">✦ LEARNING OBJECTIVES</span>
+                <h2>By the End of This Lesson, Students Will…</h2>
+                <ul class="objectives-list" id="objectivesList">
+                    <li><div class="obj-icon">✓</div> Describe the seasonal movement patterns of yak herding communities in Haa and Sephu.</li>
+                    <li><div class="obj-icon">✓</div> Analyse documentary film footage as a primary source for understanding highland ecology.</li>
+                    <li><div class="obj-icon">✓</div> Evaluate how oral history recordings convey ecological knowledge across generations.</li>
+                    <li><div class="obj-icon">✓</div> Map seasonal herding routes and connect them to ecological zones and climate patterns.</li>
+                    <li><div class="obj-icon">✓</div> Discuss the relationship between cultural practice and environmental conservation.</li>
+                </ul>
+            </div>
+
+            <hr class="sec-divider">
+
+            <div class="content-section">
+                <span class="eyebrow">✦ CURRICULUM LINKS</span>
+                <h2>Cross-Curricular Connections</h2>
+                <p id="curriculumBody">This lesson is designed for secondary students (Grades 9–12) with cross-curricular links to environmental science, social studies, and geography. It supports critical media literacy through the analysis of documentary film and recorded oral histories. Teachers may adapt it as a standalone unit or integrate it into a broader cultural studies module.</p>
+            </div>
+        </div>
+
+        <!-- SESSIONS PANEL -->
+        <div class="lesson-panel" id="panel-sessions">
+            <div class="content-section">
+                <span class="eyebrow">✦ SESSION GUIDE</span>
+                <h2>Session-by-Session Plan</h2>
+                <p>Each session is approximately 60–75 minutes. Materials and media links are embedded in each session description.</p>
+            </div>
+            <div class="sessions-list" id="sessionsList">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- DISCUSSION PANEL -->
+        <div class="lesson-panel" id="panel-discussion">
+            <div class="content-section">
+                <span class="eyebrow">✦ DISCUSSION QUESTIONS</span>
+                <h2>Guided Discussion Questions</h2>
+                <p>Use these questions to facilitate group discussion across sessions. Questions are sequenced from comprehension to critical analysis.</p>
+            </div>
+            <div class="questions-list" id="questionsList">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- ASSESSMENT PANEL -->
+        <div class="lesson-panel" id="panel-assessment">
+            <div class="content-section">
+                <span class="eyebrow">✦ ASSESSMENT</span>
+                <h2>Assessment Frameworks</h2>
+                <p>Formative and summative assessment options — adaptable to your school's grading framework.</p>
+            </div>
+            <div class="assessment-grid" id="assessmentGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- MEDIA PANEL -->
+        <div class="lesson-panel" id="panel-media">
+            <div class="content-section">
+                <span class="eyebrow">✦ LINKED MEDIA</span>
+                <h2>Media Resources for This Lesson</h2>
+                <p>Each piece of media is directly referenced in the session guide. Click to access the full resource in the Highland Heritage archive.</p>
+            </div>
+            <div class="media-panel-inner" id="mediaList">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- Quick Info -->
+        <div class="sidebar-card">
+            <h3>Lesson Details</h3>
+            <div class="info-row">
+                <span class="info-label">Plan Number</span>
+                <span class="info-value" id="sbPlanNum">Plan 01</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Theme</span>
+                <span class="info-value" id="sbTheme">Environment</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Grade Level</span>
+                <span class="info-value" id="sbGrade">Grades 9–12</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Sessions</span>
+                <span class="info-value" id="sbSessions">5 Sessions</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Location Focus</span>
+                <span class="info-value" id="sbLocation">Haa &amp; Sephu</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Media Type</span>
+                <span class="info-value" id="sbMedia">Film, Oral History</span>
+            </div>
+            <a href="#" class="download-btn-full">↓ Download PDF Plan</a>
+        </div>
+
+        <!-- Media shortcuts -->
+        <div class="sidebar-card">
+            <h3>Quick Media Access</h3>
+            <div id="sbMediaLinks">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Related Plans -->
+        <div class="sidebar-card">
+            <h3>Related Lesson Plans</h3>
+            <div id="relatedPlans">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+    </aside>
+
+</div><!-- /detail-body -->
+
+<footer style="text-align:center;padding:30px;background:#14422e;color:rgba(255,255,255,0.4);font-size:13px;">
+    <p>© 2026 Highland Heritage Project · A Royal Thimphu College Initiative</p>
+</footer>
+
+<script>
+// ════════════════════════════════════════════
+// LESSON DATA — one object per lesson plan
+// ════════════════════════════════════════════
+const lessons = {
+    "1": {
+        planNum: "Plan 01",
+        theme: "Environment",
+        grade: "Grades 9–12",
+        sessions: "5 Sessions",
+        location: "Haa & Sephu",
+        mediaType: "Film, Oral History",
+        title: `Highland Ecology &amp; the Yak <em>Herding Calendar</em>`,
+        titlePlain: "Highland Ecology & the Yak Herding Calendar",
+        desc: "A multi-session lesson exploring the seasonal migration patterns of yak herding communities in Haa and Sephu — integrating ecology, geography, and oral history through film and field testimonies.",
+        tags: ["Environment", "Haa", "Sephu", "Grades 9–12", "Film + Oral History"],
+        overview1: "This multi-session lesson invites students to explore the seasonal migration patterns of yak herding communities in Haa and Sephu. Through documentary film footage, elder testimonies, and mapping activities, students build a rich understanding of highland ecology as it is lived and known by its communities.",
+        overview2: "Cross-curricular connections link environmental science with social studies, geography, and oral history methodology. The lesson emphasises the role of traditional ecological knowledge as a form of expertise, challenging students to think critically about how knowledge is produced and preserved.",
+        curriculum: "Designed for secondary students (Grades 9–12) with cross-curricular links to environmental science, social studies, and geography. Supports critical media literacy through documentary film and oral history analysis.",
+        objectives: [
+            "Describe the seasonal movement patterns of yak herding communities in Haa and Sephu.",
+            "Analyse documentary film footage as a primary source for understanding highland ecology.",
+            "Evaluate how oral history recordings convey ecological knowledge across generations.",
+            "Map seasonal herding routes and connect them to ecological zones and climate patterns.",
+            "Discuss the relationship between cultural practice and environmental conservation."
+        ],
+        sessionsList: [
+            { num: "01", title: "Introduction to Highland Ecology", desc: "Students watch the film 'A Celebration of High-Altitude Heritage' and discuss initial observations about the landscape, climate, and community.", tags: ["Film viewing", "Group discussion"] },
+            { num: "02", title: "Mapping the Herding Calendar", desc: "Using maps and elder testimonies, students trace seasonal migration routes between summer and winter pastures across Haa and Sephu.", tags: ["Mapping activity", "Oral history"] },
+            { num: "03", title: "The Yak as Ecological Keystone", desc: "Students examine the role of the yak in maintaining alpine grassland health — connecting animal husbandry to broader ecological processes.", tags: ["Research task", "Ecology"] },
+            { num: "04", title: "Conservation Through Culture", desc: "Analysis of how traditional practices — sacred zones, seasonal restrictions — function as informal conservation strategies.", tags: ["Critical analysis", "Policy discussion"] },
+            { num: "05", title: "Synthesis & Presentation", desc: "Student groups present their findings in a short 'documentary brief' — combining visual evidence, map work, and quoted oral history passages.", tags: ["Group presentation", "Assessment"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What does the film reveal about the relationship between yak herders and the seasonal landscape? What surprised you?" },
+            { num: "Q2", text: "How does the herding calendar reflect ecological knowledge? What does it tell us about how herders understand their environment?" },
+            { num: "Q3", text: "In what ways do traditional practices — such as leaving certain pastures unused in summer — function as conservation strategies?" },
+            { num: "Q4", text: "How does oral history differ from written history as a form of ecological knowledge? What are its strengths and limitations?" },
+            { num: "Q5", text: "What challenges do highland herding communities face today? How might these be addressed while preserving cultural practices?" }
+        ],
+        assessments: [
+            { title: "Herding Calendar Map", desc: "Students create an annotated map showing seasonal migration routes, ecological zones, and key cultural sites. Assessed on accuracy, annotation quality, and presentation." },
+            { title: "Oral History Analysis", desc: "A short written reflection (300–400 words) analysing one elder testimony from the archive — identifying ecological knowledge embedded in the account." },
+            { title: "Documentary Brief", desc: "Group presentation combining film evidence, map work, and oral history quotes into a 5-minute 'documentary brief' on highland ecology." },
+            { title: "Comparative Essay", desc: "Optional extension: a 600-word essay comparing traditional ecological knowledge with a scientific ecology text on the same landscape." }
+        ],
+        media: [
+            { type: "Film", icon: "🎬", title: "A Celebration of High-Altitude Heritage of Laya", desc: "The primary film resource for this lesson — 12:45 minutes documenting the Royal Highland Festival and yak herding life.", link: "film.html", cta: "Watch Film →" },
+            { type: "Vignette", icon: "📖", title: "Tshonapata Treasure Lake", desc: "An ethnographic vignette on the sacred lake of Tshonapata — used in Session 4 on conservation and sacred geography.", link: "vignette.html", cta: "Read Vignette →" },
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "Photo essay from Thimphu used as supplementary visual material in Session 1 for landscape and cultural context.", link: "photo-essay.html", cta: "View Essay →" }
+        ],
+        related: [
+            { num: "02", icon: "🦬", title: "Yaks and the Alpine Grassland Ecosystem", id: "2" },
+            { num: "03", icon: "🌊", title: "Sacred Lakes and Water Conservation", id: "3" },
+            { num: "07", icon: "🏔️", title: "Sacred Mountains & Bhutanese Cosmology", id: "7" }
+        ]
+    },
+    "2": {
+        planNum: "Plan 02",
+        theme: "Environment",
+        grade: "Grades 8–10",
+        sessions: "3 Sessions",
+        location: "Sephu",
+        mediaType: "Film, Oral History",
+        title: "Yaks and the <em>Alpine Grassland Ecosystem</em>",
+        titlePlain: "Yaks and the Alpine Grassland Ecosystem",
+        desc: "An ecology-focused lesson examining the relationship between yak herding and alpine grassland health — using drone footage and herder interviews from Sephu as primary sources.",
+        tags: ["Ecology", "Sephu", "Grades 8–10", "Drone Footage"],
+        overview1: "This lesson centres on the ecological role of the yak in alpine grassland environments. Students examine drone footage from Sephu alongside herder interviews to understand how traditional animal husbandry shapes and sustains highland ecosystems.",
+        overview2: "The lesson builds ecological literacy by connecting scientific concepts — grazing pressure, nutrient cycling, species diversity — to lived herding practice, showing how traditional knowledge and ecology science often align.",
+        curriculum: "Designed for Grades 8–10 with links to biology, environmental science, and social studies. Suitable as a standalone ecology unit or as part of a broader study of highland land use.",
+        objectives: [
+            "Describe the ecological relationship between yaks and alpine grassland environments.",
+            "Analyse drone footage and herder interviews as complementary sources of ecological knowledge.",
+            "Identify the impact of grazing patterns on biodiversity and grassland health.",
+            "Discuss how traditional herding practices support ecosystem sustainability.",
+            "Evaluate the challenges facing alpine grasslands in the context of climate change."
+        ],
+        sessionsList: [
+            { num: "01", title: "Alpine Grasslands — What Do We Know?", desc: "Introduction to alpine grassland ecosystems using aerial imagery and background reading. Students record initial knowledge and questions.", tags: ["Prior knowledge", "Map work"] },
+            { num: "02", title: "Yaks as Ecosystem Engineers", desc: "Students analyse drone footage from Sephu and herder interview excerpts to examine how grazing patterns maintain grassland health.", tags: ["Film analysis", "Oral history"] },
+            { num: "03", title: "Threats and Futures", desc: "Group discussion and research on climate change, overgrazing risk, and conservation strategies — including community-based approaches.", tags: ["Research", "Debate"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What did the drone footage reveal about the grassland landscape that you couldn't learn from a photograph alone?" },
+            { num: "Q2", text: "How do herders describe their relationship with the grasslands? What ecological knowledge is embedded in their accounts?" },
+            { num: "Q3", text: "What is 'overgrazing' and how might it affect biodiversity? How do herders manage this risk?" },
+            { num: "Q4", text: "How is climate change affecting alpine grasslands, and what strategies — traditional and scientific — exist to respond?" }
+        ],
+        assessments: [
+            { title: "Ecosystem Diagram", desc: "Students create a labelled diagram showing the relationships between yaks, grassland plants, soil, and climate in the Sephu alpine zone." },
+            { title: "Interview Analysis", desc: "A short written response (200–300 words) identifying ecological knowledge in one herder interview excerpt." },
+            { title: "Conservation Proposal", desc: "Group task: design a short conservation proposal for Sephu's alpine grasslands, drawing on both traditional practice and scientific knowledge." }
+        ],
+        media: [
+            { type: "Film", icon: "🎬", title: "A Celebration of High-Altitude Heritage of Laya", desc: "Used in Session 2 for drone footage of highland landscapes and herder community life.", link: "film.html", cta: "Watch Film →" },
+            { type: "Vignette", icon: "📖", title: "Tshonapata Treasure Lake", desc: "Supplementary reading on the relationship between sacred geography and ecological protection.", link: "vignette.html", cta: "Read Vignette →" }
+        ],
+        related: [
+            { num: "01", icon: "🌿", title: "Highland Ecology & the Yak Herding Calendar", id: "1" },
+            { num: "03", icon: "🌊", title: "Sacred Lakes and Water Conservation", id: "3" }
+        ]
+    },
+    "3": {
+        planNum: "Plan 03",
+        theme: "Environment",
+        grade: "Grades 9–11",
+        sessions: "2 Sessions",
+        location: "Haa",
+        mediaType: "Vignette, Photo Essay",
+        title: "Sacred Lakes and <em>Water Conservation</em>",
+        titlePlain: "Sacred Lakes and Water Conservation",
+        desc: "Using the vignette on Tshonapata to explore how sacred site designation functions as a conservation strategy — connecting indigenous practice to environmental policy.",
+        tags: ["Conservation", "Haa", "Grades 9–11", "Vignette"],
+        overview1: "This lesson uses the ethnographic vignette on Tshonapata — the Treasure Lake of Haa — as a lens into how sacred site designation functions as an informal environmental conservation strategy.",
+        overview2: "Students explore the intersection of Buddhist cosmology, community governance, and ecological protection, considering how indigenous frameworks for environmental care compare with formal policy approaches.",
+        curriculum: "Designed for Grades 9–11 with links to environmental science, social studies, and religious studies. Pairs well with formal environmental policy units.",
+        objectives: [
+            "Describe the cultural and cosmological significance of Tshonapata for communities in Haa.",
+            "Analyse how sacred site designation functions as a conservation strategy.",
+            "Compare indigenous environmental governance with formal policy approaches.",
+            "Evaluate the strengths and limitations of sacred site protection as a conservation method.",
+            "Discuss the relationship between spiritual belief, community governance, and ecological health."
+        ],
+        sessionsList: [
+            { num: "01", title: "Reading Tshonapata", desc: "Students read the vignette on Tshonapata and discuss the layers of significance — cosmological, ecological, and community — embedded in the lake.", tags: ["Close reading", "Discussion"] },
+            { num: "02", title: "Sacred Sites as Conservation Tools", desc: "Comparative analysis: students examine Tshonapata alongside examples of sacred site conservation from other regions, evaluating effectiveness and limitations.", tags: ["Comparative analysis", "Policy discussion"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What makes Tshonapata sacred? How is this different from a scientific designation of 'protected area'?" },
+            { num: "Q2", text: "In what ways does the sacred status of the lake protect it ecologically? What are the mechanisms of this protection?" },
+            { num: "Q3", text: "What are the limitations of sacred site conservation? What happens when community belief systems change?" },
+            { num: "Q4", text: "How might formal environmental policy and indigenous sacred site practices be integrated to strengthen conservation?" }
+        ],
+        assessments: [
+            { title: "Comparative Analysis", desc: "Students write a 400-word comparison between the sacred site protection of Tshonapata and a formal national park framework of their choice." },
+            { title: "Policy Brief", desc: "Extension task: draft a short policy brief recommending how sacred site designations could be incorporated into Bhutan's environmental protection framework." }
+        ],
+        media: [
+            { type: "Vignette", icon: "📖", title: "Tshonapata Treasure Lake", desc: "The core text for this lesson — an 8-minute ethnographic vignette on the sacred lake and its ecological significance.", link: "vignette.html", cta: "Read Vignette →" },
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "Visual reference for the spiritual and ritual context surrounding sacred sites in highland Bhutan.", link: "photo-essay.html", cta: "View Essay →" }
+        ],
+        related: [
+            { num: "01", icon: "🌿", title: "Highland Ecology & the Yak Herding Calendar", id: "1" },
+            { num: "07", icon: "🏔️", title: "Sacred Mountains & Bhutanese Cosmology", id: "7" }
+        ]
+    },
+    "4": {
+        planNum: "Plan 04",
+        theme: "Culture & Identity",
+        grade: "Grades 9–12",
+        sessions: "2 Sessions",
+        location: "Thimphu",
+        mediaType: "Photo Essay, Oral History",
+        title: "Mask Dance &amp; Cultural Identity at <em>Thimphu Tshechu</em>",
+        titlePlain: "Mask Dance & Cultural Identity at Thimphu Tshechu",
+        desc: "Using photo essays and oral history recordings from Thimphu to explore how festival culture carries and transmits collective identity across generations.",
+        tags: ["Culture", "Thimphu", "Grades 9–12", "Photo Essay"],
+        overview1: "This lesson explores the Thimphu Tshechu — Bhutan's most celebrated festival — as a vehicle for cultural identity transmission. Through photo essays and oral history recordings, students examine how mask dances function as living repositories of Buddhist narrative, community memory, and cultural belonging.",
+        overview2: "Students are invited to consider how festivals create shared identity, and how this transmission changes over time as communities urbanise and engage with modernity.",
+        curriculum: "Designed for Grades 9–12 with links to cultural studies, religious studies, and oral history methodology. Suitable for a unit on intangible cultural heritage.",
+        objectives: [
+            "Describe the cultural significance of the Thimphu Tshechu and the mask dances performed within it.",
+            "Analyse photo essay imagery as a primary source for understanding festival culture.",
+            "Evaluate how oral history recordings from festival participants reveal processes of identity transmission.",
+            "Discuss the challenges of preserving intangible cultural heritage in modernising societies.",
+            "Connect festival culture to broader themes of community, belonging, and collective memory."
+        ],
+        sessionsList: [
+            { num: "01", title: "Reading the Mask Dance", desc: "Students examine photo essay images from Thimphu Tshechu and discuss what the masks, costumes, and gestures communicate about Buddhist narrative and identity.", tags: ["Photo analysis", "Group discussion"] },
+            { num: "02", title: "Voices from the Festival", desc: "Students listen to oral history recordings from festival participants — dancers, monks, and elders — and analyse how they describe the festival's cultural role.", tags: ["Oral history analysis", "Reflection writing"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What do the mask dance costumes and gestures communicate? What knowledge do you need to 'read' them?" },
+            { num: "Q2", text: "How do festival participants describe the Tshechu's importance? What do their accounts reveal about cultural identity?" },
+            { num: "Q3", text: "How does a festival 'transmit' culture? What is lost or changed when festivals are adapted for tourism or media?" },
+            { num: "Q4", text: "What challenges face the preservation of mask dance traditions? Who is responsible for their continuation?" }
+        ],
+        assessments: [
+            { title: "Image Analysis", desc: "Students write a 300-word close analysis of one photograph from the photo essay, identifying what it reveals about cultural identity and festival meaning." },
+            { title: "Oral History Reflection", desc: "A short reflective response (250 words) on one oral history excerpt — identifying how the speaker constructs cultural identity through their account." }
+        ],
+        media: [
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "The primary visual resource for this lesson — 24 photographs documenting the Thimphu Tshechu mask dances and festival atmosphere.", link: "photo-essay.html", cta: "View Essay →" },
+            { type: "Film", icon: "🎬", title: "A Celebration of High-Altitude Heritage of Laya", desc: "Supplementary film showing community festival culture in a highland context — used for comparative discussion.", link: "film.html", cta: "Watch Film →" }
+        ],
+        related: [
+            { num: "05", icon: "🪡", title: "Kira Weaving and Women's Knowledge Transmission", id: "5" },
+            { num: "06", icon: "🎙️", title: "Oral Histories as Primary Sources", id: "6" }
+        ]
+    },
+    "5": {
+        planNum: "Plan 05",
+        theme: "Culture & Identity",
+        grade: "Grades 10–12",
+        sessions: "2 Sessions",
+        location: "Thimphu",
+        mediaType: "Photo Essay, Oral History",
+        title: "Kira Weaving and <em>Women's Knowledge Transmission</em>",
+        titlePlain: "Kira Weaving and Women's Knowledge Transmission",
+        desc: "Examining the symbolic vocabulary of Kira textiles from Thimphu and how weaving functions as a vehicle for cultural knowledge, identity, and intergenerational learning.",
+        tags: ["Gender & Knowledge", "Thimphu", "Grades 10–12", "Textiles"],
+        overview1: "This lesson examines the Kira — the traditional woven dress worn by Bhutanese women — not merely as a garment but as a living text encoding cultural meaning, family lineage, and ecological knowledge. Students study the symbolic vocabulary of textile patterns alongside oral history recordings of master weavers.",
+        overview2: "A central theme is how weaving functions as a practice of women's knowledge transmission — a form of education that operates outside formal institutions, sustaining cultural continuity across generations.",
+        curriculum: "Designed for Grades 10–12 with links to gender studies, cultural studies, and oral history methodology. Well-suited to units on intangible cultural heritage and knowledge systems.",
+        objectives: [
+            "Identify and describe the symbolic vocabulary embedded in Kira textile patterns.",
+            "Analyse weaving as a practice of intergenerational cultural knowledge transmission.",
+            "Evaluate oral history accounts of master weavers as primary sources of cultural knowledge.",
+            "Discuss the gendered dimensions of knowledge transmission in Bhutanese highland culture.",
+            "Connect textile practice to broader debates about intangible cultural heritage and its preservation."
+        ],
+        sessionsList: [
+            { num: "01", title: "Reading the Kira", desc: "Students examine photographic documentation of Kira textiles and learn to identify key pattern elements — their names, meanings, and regional origins.", tags: ["Visual analysis", "Pattern study"] },
+            { num: "02", title: "Weavers' Voices", desc: "Students listen to oral history recordings of master weavers from Thimphu and discuss how they describe the transmission of weaving knowledge — from mother to daughter, elder to apprentice.", tags: ["Oral history", "Discussion"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What information is encoded in the patterns of a Kira? What knowledge do you need to interpret them?" },
+            { num: "Q2", text: "How do weavers describe the process of learning? What does their account tell us about how cultural knowledge is transmitted outside schools?" },
+            { num: "Q3", text: "What is at stake if weaving knowledge is lost? Who is responsible for its preservation?" },
+            { num: "Q4", text: "How does the gendered nature of weaving knowledge affect its status and preservation? What parallels exist in other cultures?" }
+        ],
+        assessments: [
+            { title: "Pattern Analysis", desc: "Students annotate a photograph of a Kira, identifying and interpreting key pattern elements using knowledge gained in Session 1." },
+            { title: "Knowledge Transmission Essay", desc: "A 400-word essay examining how weaving functions as a vehicle for cultural knowledge transmission, drawing on oral history evidence." }
+        ],
+        media: [
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "Visual documentation from Thimphu providing cultural context for Bhutanese textile traditions and ceremonial dress.", link: "photo-essay.html", cta: "View Essay →" },
+            { type: "Film", icon: "🎬", title: "A Celebration of High-Altitude Heritage of Laya", desc: "Supplementary footage showing highland dress and textile culture in a festival context.", link: "film.html", cta: "Watch Film →" }
+        ],
+        related: [
+            { num: "04", icon: "🎭", title: "Mask Dance & Cultural Identity at Thimphu Tshechu", id: "4" },
+            { num: "06", icon: "🎙️", title: "Oral Histories as Primary Sources", id: "6" }
+        ]
+    },
+    "6": {
+        planNum: "Plan 06",
+        theme: "Oral Tradition",
+        grade: "Grades 10–12",
+        sessions: "2 Sessions",
+        location: "Haa, Sephu, Thimphu",
+        mediaType: "Oral History, Film",
+        title: "Oral Histories as <em>Primary Sources</em>",
+        titlePlain: "Oral Histories as Primary Sources",
+        desc: "A methodology lesson on using oral histories in research — built around recordings of elder herders and ritual specialists from the Highland Heritage archive.",
+        tags: ["Research Skills", "Oral Tradition", "Grades 10–12", "Methodology"],
+        overview1: "This methodology lesson introduces students to oral history as an academic discipline and as a primary source for cultural research. Using recordings from the Highland Heritage archive — elder herders from Haa and Sephu, and ritual specialists from Thimphu — students practise the skills of listening, transcription, and analysis.",
+        overview2: "The lesson challenges students to think critically about what oral history can and cannot tell us, and how it relates to other forms of evidence — documentary, photographic, and scientific.",
+        curriculum: "Designed for Grades 10–12 with cross-curricular links to social studies, history, and research methodology. Ideal for students engaged in fieldwork or independent research projects.",
+        objectives: [
+            "Define oral history and explain its role as a primary source in cultural research.",
+            "Practise active listening and basic transcription skills using archive recordings.",
+            "Identify key themes, narrative strategies, and knowledge claims in oral history accounts.",
+            "Evaluate the strengths and limitations of oral history as historical evidence.",
+            "Apply oral history methodology to design a simple research question and interview framework."
+        ],
+        sessionsList: [
+            { num: "01", title: "What Is Oral History?", desc: "Introduction to oral history as a discipline — its history, methodology, and ethical dimensions. Students practise active listening with a short archive excerpt.", tags: ["Introduction", "Listening practice"] },
+            { num: "02", title: "From Listening to Analysis", desc: "Students analyse a longer oral history recording, practise transcription, identify key themes, and develop their own research question for a hypothetical follow-up interview.", tags: ["Analysis", "Research design"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What is the difference between an oral history and an anecdote? What makes an account 'historical'?" },
+            { num: "Q2", text: "What are the ethical responsibilities of an oral historian? How should recordings be stored and used?" },
+            { num: "Q3", text: "What can oral history tell us that written records cannot? What are its limitations?" },
+            { num: "Q4", text: "How might the relationship between interviewer and narrator affect what is said — and what is left out?" }
+        ],
+        assessments: [
+            { title: "Transcription Exercise", desc: "Students transcribe a 3-minute excerpt from an archive recording and annotate it with observations about content, language, and meaning." },
+            { title: "Analytical Response", desc: "A 350-word written analysis of one oral history recording, identifying the narrator's key claims, narrative strategies, and the types of knowledge embedded in their account." },
+            { title: "Research Design", desc: "Students design a simple oral history research question and a 5-question interview guide for a hypothetical highland community research project." }
+        ],
+        media: [
+            { type: "Film", icon: "🎬", title: "A Celebration of High-Altitude Heritage of Laya", desc: "Contains embedded oral testimony sequences used as listening practice material in Session 1.", link: "film.html", cta: "Watch Film →" },
+            { type: "Vignette", icon: "📖", title: "Tshonapata Treasure Lake", desc: "An oral-history-informed vignette — used in Session 2 to model how oral accounts are woven into ethnographic writing.", link: "vignette.html", cta: "Read Vignette →" },
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "Visual context for the communities whose oral histories appear in the archive.", link: "photo-essay.html", cta: "View Essay →" }
+        ],
+        related: [
+            { num: "04", icon: "🎭", title: "Mask Dance & Cultural Identity at Thimphu Tshechu", id: "4" },
+            { num: "01", icon: "🌿", title: "Highland Ecology & the Yak Herding Calendar", id: "1" }
+        ]
+    },
+    "7": {
+        planNum: "Plan 07",
+        theme: "Cosmology",
+        grade: "Grades 9–12",
+        sessions: "3 Sessions",
+        location: "Haa, Sephu",
+        mediaType: "Film, Vignette, Photo Essay",
+        title: "Sacred Mountains &amp; <em>Bhutanese Cosmology</em>",
+        titlePlain: "Sacred Mountains & Bhutanese Cosmology",
+        desc: "Introducing students to the cosmological worldview of highland Bhutan — the role of mountain spirits, sacred geography, and Buddhist frameworks in shaping everyday life and ritual practice.",
+        tags: ["Cosmology", "Buddhism", "Grades 9–12", "Sacred Geography"],
+        overview1: "This lesson introduces students to the cosmological worldview of highland Bhutan — a landscape in which mountains are not merely geological formations but inhabited spiritual presences, each with its own history, personality, and relationship to the communities below.",
+        overview2: "Drawing on film, vignette, and photo essay resources, students explore how Buddhist and animist frameworks interweave in highland Bhutanese life, shaping ritual practice, land use, and community identity.",
+        curriculum: "Designed for Grades 9–12 with links to religious studies, cultural studies, and geography. Suitable for units on world religions, sacred geography, or environmental humanities.",
+        objectives: [
+            "Describe the key features of the Bhutanese highland cosmological worldview.",
+            "Identify how sacred geography shapes land use, ritual practice, and community identity.",
+            "Analyse the relationship between Buddhist and animist frameworks in highland Bhutan.",
+            "Evaluate how documentary media represents cosmological belief systems.",
+            "Discuss the relevance of cosmological frameworks to contemporary environmental and social issues."
+        ],
+        sessionsList: [
+            { num: "01", title: "Sacred Geography — Reading the Landscape", desc: "Students examine film and photo essay resources to identify how the highland landscape is coded as sacred — mountains, lakes, passes, and stones.", tags: ["Film viewing", "Visual analysis"] },
+            { num: "02", title: "Buddhist and Animist Frameworks", desc: "Introduction to the cosmological frameworks shaping highland Bhutanese life — including mountain spirits (nyen), protective deities (yul lha), and Buddhist hierarchies.", tags: ["Conceptual introduction", "Discussion"] },
+            { num: "03", title: "Living Cosmology", desc: "Students explore how cosmological beliefs shape everyday practice — from route choices to ritual offerings — using the Tshonapata vignette as a case study.", tags: ["Case study", "Reflection"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "How does the highland landscape 'look different' when understood through a cosmological framework? What do you notice that you might otherwise overlook?" },
+            { num: "Q2", text: "How do Buddhist and animist beliefs coexist in highland Bhutanese life? Are there tensions between them?" },
+            { num: "Q3", text: "How does the sacred status of mountains and lakes shape how communities use and protect the landscape?" },
+            { num: "Q4", text: "What happens to cosmological frameworks when communities urbanise and engage with modernity? What is lost or transformed?" }
+        ],
+        assessments: [
+            { title: "Cosmological Map", desc: "Students create an annotated map of a highland Bhutanese landscape, marking sacred sites, spiritual presences, and ritual routes identified from course materials." },
+            { title: "Analytical Essay", desc: "A 400-word essay examining how a specific cosmological belief shapes land use or community practice in highland Bhutan, using evidence from the course materials." },
+            { title: "Reflective Journal", desc: "A short reflective piece (200 words) responding to the question: what would it mean to 'see' the landscape the way highland Bhutanese communities do?" }
+        ],
+        media: [
+            { type: "Film", icon: "🎬", title: "A Celebration of High-Altitude Heritage of Laya", desc: "Primary film resource — contains landscape sequences and community testimony relevant to sacred geography.", link: "film.html", cta: "Watch Film →" },
+            { type: "Vignette", icon: "📖", title: "Tshonapata Treasure Lake", desc: "Core case study for Session 3 — an ethnographic vignette on a sacred lake and its cosmological significance.", link: "vignette.html", cta: "Read Vignette →" },
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "Visual documentation of ritual practice and sacred landscape in Thimphu — used across all three sessions.", link: "photo-essay.html", cta: "View Essay →" }
+        ],
+        related: [
+            { num: "08", icon: "🕯️", title: "Prayer Flags, Butter Lamps & Daily Devotion", id: "8" },
+            { num: "03", icon: "🌊", title: "Sacred Lakes and Water Conservation", id: "3" }
+        ]
+    },
+    "8": {
+        planNum: "Plan 08",
+        theme: "Cosmology",
+        grade: "Grades 8–10",
+        sessions: "2 Sessions",
+        location: "Haa, Thimphu",
+        mediaType: "Photo Essay, Vignette",
+        title: "Prayer Flags, Butter Lamps &amp; <em>Daily Devotion</em>",
+        titlePlain: "Prayer Flags, Butter Lamps & Daily Devotion",
+        desc: "A lesson examining how everyday ritual objects — prayer flags, butter lamps, incense — function as cosmological markers in highland Bhutan, using photo essays from Haa and Thimphu.",
+        tags: ["Ritual", "Haa", "Thimphu", "Grades 8–10", "Material Culture"],
+        overview1: "This lesson focuses on the material culture of everyday Buddhist devotion in highland Bhutan — the prayer flags that mark high passes, the butter lamps lit in household shrines, the incense smoke rising through temple courtyards.",
+        overview2: "Students learn to 'read' these objects as cosmological markers — each encoding theological meaning, community memory, and daily acts of orientation toward the sacred — using photo essay documentation from Haa and Thimphu.",
+        curriculum: "Designed for Grades 8–10 with links to religious studies and cultural studies. Suitable as an introductory unit on material religion and everyday ritual practice.",
+        objectives: [
+            "Identify key ritual objects of everyday Bhutanese Buddhist devotion — prayer flags, butter lamps, mani stones, incense.",
+            "Describe the cosmological meanings encoded in these objects and their placement in the landscape.",
+            "Analyse photo essay images as documentation of everyday religious practice.",
+            "Discuss how material objects function as 'cosmological markers' in highland Bhutanese life.",
+            "Reflect on how everyday ritual practice connects individual, community, and cosmos."
+        ],
+        sessionsList: [
+            { num: "01", title: "Objects of Devotion", desc: "Students examine photo essay images from Haa and Thimphu, identifying and cataloguing everyday ritual objects and discussing what they communicate about cosmological belief.", tags: ["Visual analysis", "Discussion"] },
+            { num: "02", title: "Reading the Landscape of Devotion", desc: "Students map the placement of ritual objects across a highland landscape — considering how prayer flags at passes, mani stones at crossroads, and butter lamps in shrines create a devotional geography.", tags: ["Mapping", "Conceptual synthesis"] }
+        ],
+        discussionQuestions: [
+            { num: "Q1", text: "What ritual objects appear in the photographs? What do you notice about where they are placed and how they are made?" },
+            { num: "Q2", text: "What does a prayer flag 'do'? What does its placement at a mountain pass communicate about how the landscape is understood?" },
+            { num: "Q3", text: "How do everyday objects like butter lamps connect individual devotion to a larger cosmological system?" },
+            { num: "Q4", text: "What would change in the landscape if these objects were removed? What would be lost beyond the objects themselves?" }
+        ],
+        assessments: [
+            { title: "Object Study", desc: "Students produce a short annotated study of one ritual object — identifying its name, material, placement, and cosmological meaning using photo essay evidence." },
+            { title: "Devotional Geography Map", desc: "Students create a 'devotional geography' map of a highland Bhutanese landscape, plotting the placement and meaning of ritual objects across a community space." }
+        ],
+        media: [
+            { type: "Photo Essay", icon: "📷", title: "Sacred Rituals of the Highlands", desc: "The primary resource for this lesson — 24 photographs documenting ritual objects, ceremonial spaces, and everyday devotional practice in Thimphu.", link: "photo-essay.html", cta: "View Essay →" },
+            { type: "Vignette", icon: "📖", title: "Tshonapata Treasure Lake", desc: "Supplementary reading showing how ritual objects and sacred geography interweave in a specific Haa community site.", link: "vignette.html", cta: "Read Vignette →" }
+        ],
+        related: [
+            { num: "07", icon: "🏔️", title: "Sacred Mountains & Bhutanese Cosmology", id: "7" },
+            { num: "04", icon: "🎭", title: "Mask Dance & Cultural Identity at Thimphu Tshechu", id: "4" }
+        ]
+    }
+};
+
+// ════════════════════════════════════════════
+// LOAD LESSON FROM URL PARAM
+// ════════════════════════════════════════════
+function getLessonId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('plan') || '1';
+}
+
+function loadLesson(id) {
+    const l = lessons[id] || lessons['1'];
+
+    // Hero
+    document.getElementById('heroBadgeTheme').textContent = l.theme;
+    document.getElementById('heroPlanNum').textContent = `${l.planNum} · ${l.sessions}`;
+    document.getElementById('heroTitle').innerHTML = l.title;
+    document.getElementById('heroDesc').textContent = l.desc;
+    const tagsEl = document.getElementById('heroTags');
+    tagsEl.innerHTML = l.tags.map(t => `<span class="hero-tag">${t}</span>`).join('');
+
+    // Overview
+    document.getElementById('overviewTitle').textContent = `About This Lesson`;
+    document.getElementById('overviewBody1').textContent = l.overview1;
+    document.getElementById('overviewBody2').textContent = l.overview2;
+    document.getElementById('curriculumBody').textContent = l.curriculum;
+    document.getElementById('objectivesList').innerHTML = l.objectives.map(o =>
+        `<li><div class="obj-icon">✓</div>${o}</li>`
+    ).join('');
+
+    // Sessions
+    document.getElementById('sessionsList').innerHTML = l.sessionsList.map(s =>
+        `<div class="session-card">
+            <div class="session-num">${s.num}</div>
+            <div class="session-info">
+                <h4>${s.title}</h4>
+                <p>${s.desc}</p>
+                <div class="session-tags">${s.tags.map(t => `<span class="session-tag">${t}</span>`).join('')}</div>
+            </div>
+        </div>`
+    ).join('');
+
+    // Discussion
+    document.getElementById('questionsList').innerHTML = l.discussionQuestions.map(q =>
+        `<div class="question-item">
+            <p class="q-num">${q.num}</p>
+            <p>${q.text}</p>
+        </div>`
+    ).join('');
+
+    // Assessment
+    document.getElementById('assessmentGrid').innerHTML = l.assessments.map(a =>
+        `<div class="assessment-box">
+            <h4>${a.title}</h4>
+            <p>${a.desc}</p>
+        </div>`
+    ).join('');
+
+    // Media panel
+    document.getElementById('mediaList').innerHTML = l.media.map(m =>
+        `<a href="${m.link}" class="media-resource-card">
+            <div class="mrc-thumb">${m.icon}<span class="mrc-type-pill">${m.type}</span></div>
+            <div class="mrc-body">
+                <h4>${m.title}</h4>
+                <p>${m.desc}</p>
+                <span class="mrc-cta">${m.cta} <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+        </a>`
+    ).join('');
+
+    // Sidebar
+    document.getElementById('sbPlanNum').textContent = l.planNum;
+    document.getElementById('sbTheme').textContent = l.theme;
+    document.getElementById('sbGrade').textContent = l.grade;
+    document.getElementById('sbSessions').textContent = l.sessions;
+    document.getElementById('sbLocation').textContent = l.location;
+    document.getElementById('sbMedia').textContent = l.mediaType;
+
+    // Sidebar media shortcuts
+    document.getElementById('sbMediaLinks').innerHTML = l.media.map(m =>
+        `<a href="${m.link}" class="related-plan">
+            <div class="rp-icon">${m.icon}</div>
+            <div class="rp-info">
+                <span>${m.type}</span>
+                <strong>${m.title}</strong>
+            </div>
+        </a>`
+    ).join('');
+
+    // Related plans
+    document.getElementById('relatedPlans').innerHTML = l.related.map(r =>
+        `<a href="lesson-detail.html?plan=${r.id}" class="related-plan">
+            <div class="rp-icon">${r.icon}</div>
+            <div class="rp-info">
+                <span>Plan ${r.num}</span>
+                <strong>${r.title}</strong>
+            </div>
+        </a>`
+    ).join('');
+}
+
+// ════════════════════════════════════════════
+// TAB SWITCHER
+// ════════════════════════════════════════════
+function switchTab(name) {
+    document.querySelectorAll('.lesson-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.lesson-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector(`.lesson-tab[onclick="switchTab('${name}')"]`).classList.add('active');
+    document.getElementById(`panel-${name}`).classList.add('active');
+}
+
+// Init
+loadLesson(getLessonId());
+</script>
+
+</body>
+</html>

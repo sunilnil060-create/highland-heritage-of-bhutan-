@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thimphu Resources — Highland Heritage of Bhutan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: #f3fbf6; color: #1b2e24; padding-top: 65px; }
+
+        /* ── NAVBAR (Sephu-style, self-contained) ── */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: #1b4332;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6vw;
+            height: 65px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            flex-wrap: nowrap;
+        }
+        .navbar nav ul li { position: relative; }
+        .navbar nav ul li a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .navbar nav ul li a:hover { color: #52b788; }
+
+        /* Dropdown */
+        .navbar nav ul li.dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.6rem;
+            opacity: 0.6;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            background: #1b4332;
+            border: 1px solid rgba(82,183,136,0.25);
+            border-radius: 8px;
+            min-width: 175px;
+            padding: 0.4rem 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            z-index: 9999;
+        }
+        .dropdown-menu li a {
+            padding: 0.5rem 1rem;
+            font-size: 0.77rem;
+            color: rgba(255,255,255,0.8);
+            display: block;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+        .dropdown-menu li a:hover {
+            background: rgba(82,183,136,0.15);
+            color: #52b788;
+        }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu { display: block; }
+
+        .btn-nav {
+            background: #52b788 !important;
+            color: #1b4332 !important;
+            border-radius: 100px;
+            padding: 0.42rem 1rem !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            transition: background 0.2s !important;
+        }
+        .btn-nav:hover { background: #40a070 !important; }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            position: relative;
+            height: 500px;
+            background:
+                linear-gradient(to bottom, rgba(14,40,28,0.80) 0%, rgba(27,67,50,0.45) 55%, #f3fbf6 100%),
+                url('images/trashichho-dzong-thimphu-bhutan.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 6vw 4rem;
+        }
+        .page-hero-content { max-width: 700px; }
+        .page-hero .badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            color: #52b788;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            background: rgba(82,183,136,0.12);
+            border: 1px solid rgba(82,183,136,0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+        }
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.05;
+        }
+        .page-hero h1 .serif { font-style: italic; font-weight: 400; color: #a8d5b8; }
+        .page-hero p {
+            margin-top: 1.2rem;
+            color: rgba(255,255,255,0.72);
+            font-size: 0.93rem;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 520px;
+        }
+
+        /* ── LAYOUT ── */
+        .page-body {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 6vw 6rem;
+            gap: 3rem;
+        }
+        @media (max-width: 860px) { .page-body { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+        /* ── SIDEBAR ── */
+        .sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-label {
+            font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: #4a6358; margin-bottom: 1rem; font-weight: 600;
+        }
+        .sidebar nav ul { list-style: none; }
+        .sidebar nav ul li { margin-bottom: 0.15rem; }
+        .sidebar nav ul li a {
+            display: block; padding: 0.48rem 0.85rem;
+            font-size: 0.8rem; color: #1b2e24;
+            text-decoration: none; border-left: 2px solid transparent;
+            transition: all 0.2s; border-radius: 0 6px 6px 0;
+        }
+        .sidebar nav ul li a:hover,
+        .sidebar nav ul li a.active {
+            border-left-color: #52b788;
+            color: #1b4332;
+            background: rgba(82,183,136,0.10);
+        }
+        .sidebar-nav-link { cursor: pointer !important; pointer-events: all !important; }
+        .sidebar hr { border: none; border-top: 1px solid #c8d8c4; margin: 1.4rem 0; }
+        .sidebar-tag-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .s-tag {
+            font-size: 0.65rem; padding: 0.22rem 0.55rem;
+            border: 1px solid #c8d8c4; border-radius: 100px;
+            color: #4a6358; cursor: pointer; transition: all 0.18s; background: transparent;
+        }
+        .s-tag:hover { border-color: #52b788; color: #1b4332; background: #f0f7f2; }
+
+        /* ── SECTION HEADERS ── */
+        .section-eyebrow {
+            font-size: 0.63rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: #52b788; margin-bottom: 0.55rem; font-weight: 600;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            font-weight: 700; line-height: 1.2; margin-bottom: 0.6rem; color: #1b4332;
+        }
+        .section-desc { font-size: 0.86rem; color: #4a6358; line-height: 1.85; margin-bottom: 2rem; max-width: 580px; }
+
+        /* ── INTRO BAND ── */
+        .intro-band {
+            background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+            border-radius: 20px; padding: 2.8rem; margin-bottom: 3.5rem;
+            display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .intro-band::before {
+            content: ''; position: absolute; top: -60px; right: -60px;
+            width: 220px; height: 220px;
+            border: 1px solid rgba(82,183,136,0.15); border-radius: 50%;
+        }
+        .intro-band::after {
+            content: ''; position: absolute; bottom: -80px; right: -30px;
+            width: 280px; height: 280px;
+            border: 1px solid rgba(82,183,136,0.08); border-radius: 50%;
+        }
+        @media (max-width: 640px) { .intro-band { grid-template-columns: 1fr; } }
+        .intro-band h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem; font-weight: 700; color: #fff; line-height: 1.2;
+        }
+        .intro-band h2 em { font-style: italic; font-weight: 400; color: #52b788; }
+        .intro-band p { font-size: 0.85rem; color: rgba(216,234,221,0.78); line-height: 1.9; margin-top: 0.9rem; }
+        .intro-stats { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(82,183,136,0.2);
+            border-radius: 14px; padding: 1.2rem 1.6rem;
+        }
+        .stat-num { display: block; font-size: 2.4rem; font-weight: 600; color: #52b788; line-height: 1; font-family: 'Playfair Display', serif; }
+        .stat-label { display: block; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.4rem; }
+
+        /* ── FEATURED HIGHLIGHT CARD ── */
+        .highlight-card {
+            display: grid; grid-template-columns: 1fr 1fr;
+            background: #fff; border: 1px solid #c8d8c4; border-radius: 18px;
+            overflow: hidden; text-decoration: none; color: inherit;
+            transition: transform 0.28s, box-shadow 0.28s;
+            margin-bottom: 3.5rem;
+        }
+        .highlight-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(27,67,50,0.14); }
+        @media (max-width: 640px) { .highlight-card { grid-template-columns: 1fr; } }
+        .hc-img { position: relative; min-height: 320px; overflow: hidden; background: #1b4332; }
+        .hc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s; display: block; }
+        .highlight-card:hover .hc-img img { transform: scale(1.06); }
+        .hc-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(27,67,50,0.5) 0%, transparent 60%);
+        }
+        .hc-body { padding: 2.2rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+        .hc-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700; line-height: 1.3;
+            color: #1b4332; margin-bottom: 0.8rem; margin-top: 0.5rem;
+        }
+        .hc-desc { font-size: 0.83rem; color: #4a6358; line-height: 1.85; margin-bottom: 1.2rem; }
+
+        /* ── RESOURCE CARDS ── */
+        .resource-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.4rem; margin-bottom: 3.5rem;
+        }
+        .resource-card {
+            background: #fff; border: 1px solid #c8d8c4; border-radius: 16px;
+            overflow: hidden; transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer; text-decoration: none; color: inherit; display: block;
+        }
+        .resource-card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(27,67,50,0.13); }
+        .rc-thumb { height: 185px; position: relative; overflow: hidden; }
+        .rc-thumb img,
+        .rc-thumb video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+        .resource-card:hover .rc-thumb img,
+        .resource-card:hover .rc-thumb video { transform: scale(1.07); }
+
+        /* Emoji thumbnail placeholder (for cards without real images) */
+        .rc-thumb-placeholder {
+            height: 185px; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem;
+        }
+        .bg-maroon  { background: linear-gradient(135deg, #3b1a2e, #6b2d4a); }
+        .bg-slate   { background: linear-gradient(135deg, #1a2a3b, #2d4a6b); }
+        .bg-deep    { background: linear-gradient(135deg, #1b3040, #2d5060); }
+        .bg-ochre   { background: linear-gradient(135deg, #3b2e1a, #6b4a2d); }
+        .bg-forest  { background: linear-gradient(135deg, #1b3a1e, #2d6b32); }
+
+        .rc-pill {
+            position: absolute; top: 10px; left: 10px;
+            font-size: 0.6rem; padding: 0.28rem 0.7rem; border-radius: 100px;
+            font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; z-index: 2;
+        }
+        .pill-film     { background: #1b4332; color: #fff; }
+        .pill-essay    { background: #52b788; color: #fff; }
+        .pill-vignette { background: #2d6a4f; color: #fff; }
+        .rc-body { padding: 1.3rem 1.4rem 1.6rem; }
+        .rc-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.65rem; }
+        .rc-tag { font-size: 0.6rem; padding: 0.18rem 0.5rem; border: 1px solid #c8d8c4; border-radius: 100px; color: #4a6358; }
+        .rc-title { font-size: 0.93rem; font-weight: 600; line-height: 1.38; margin-bottom: 0.45rem; color: #1b4332; }
+        .rc-desc { font-size: 0.77rem; color: #4a6358; line-height: 1.72; margin-bottom: 1rem; }
+        .rc-cta { font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase; color: #2d6a4f; font-weight: 600; }
+
+        /* play overlay */
+        .play-over {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(27,67,50,0.22);
+            opacity: 0; transition: opacity 0.25s; z-index: 1;
+        }
+        .resource-card:hover .play-over { opacity: 1; }
+        .play-circle-sm {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            border: 2px solid rgba(255,255,255,0.75);
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+
+        /* ── ORAL HISTORY LIST ── */
+        .oral-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3.5rem; }
+        .oral-item {
+            background: #fff; border: 1px solid #c8d8c4; border-radius: 14px;
+            padding: 1.4rem 1.6rem;
+            display: grid; grid-template-columns: 2.5rem 1fr auto;
+            gap: 1.2rem; align-items: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .oral-item:hover { box-shadow: 0 8px 28px rgba(27,67,50,0.09); transform: translateX(4px); }
+        .oral-icon { font-size: 1.6rem; text-align: center; }
+        .oral-info h4 { font-size: 0.9rem; font-weight: 600; color: #1b4332; margin-bottom: 0.3rem; }
+        .oral-info p { font-size: 0.76rem; color: #4a6358; line-height: 1.65; }
+        .oral-meta { text-align: right; font-size: 0.72rem; color: #4a6358; line-height: 1.6; white-space: nowrap; }
+        .oral-meta strong { display: block; font-size: 0.9rem; color: #2d6a4f; font-weight: 600; }
+
+        /* ── FEATURED QUOTE ── */
+        .featured-quote {
+            background: linear-gradient(135deg, #1b4332 0%, #0e2820 100%);
+            border-radius: 20px; padding: 3.2rem;
+            margin-bottom: 3.5rem; position: relative; overflow: hidden;
+        }
+        .featured-quote::before {
+            content: '"'; position: absolute; top: -1.5rem; left: 1.5rem;
+            font-size: 12rem; color: rgba(82,183,136,0.10);
+            font-family: 'Playfair Display', Georgia, serif;
+            line-height: 1; pointer-events: none;
+        }
+        .featured-quote::after {
+            content: ''; position: absolute; bottom: -40px; right: -40px;
+            width: 180px; height: 180px;
+            border: 1px solid rgba(82,183,136,0.1); border-radius: 50%;
+        }
+        .featured-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+            font-weight: 400; font-style: italic;
+            color: #d8eadd; line-height: 1.78; margin-bottom: 1.4rem; position: relative; z-index: 1;
+        }
+        .quote-attr { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #52b788; }
+
+        /* ── SECTION DIVIDER ── */
+        .sec-divider { border: none; border-top: 1px solid #c8d8c4; margin: 3rem 0; }
+
+        /* ── MAP PLACEHOLDER ── */
+        .map-placeholder {
+            background: linear-gradient(135deg, #1b4332, #0e2820);
+            border-radius: 18px; height: 300px;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 0.8rem; margin-bottom: 3.5rem;
+            border: 1px solid rgba(82,183,136,0.2);
+        }
+        .map-placeholder .map-icon { font-size: 3rem; opacity: 0.45; }
+        .map-placeholder p { font-size: 0.8rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+        /* ── FOOTER ── */
+        .page-footer {
+            text-align: center;
+            padding: 30px;
+            background: #14422e;
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .page-hero-content { animation: fadeUp 0.7s ease both; }
+        .intro-band        { animation: fadeUp 0.7s 0.15s ease both; }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     NAVBAR — Sephu-style, self-contained
+     ══════════════════════════════════ -->
+<header class="navbar">
+    <a href="index.html" class="logo">Highland Heritage</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="index.html#about-section">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#about-section">Org Info</a></li>
+                    <li><a href="index.html#about-section">Mission</a></li>
+                    <li><a href="index.html#about-section">Vision</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" onclick="return false;">Locations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="haa-resources.html">Haa Resources</a></li>
+                    <li><a href="sephu-resources.html">Sephu Resources</a></li>
+                    <li><a href="thimphu-resources.html">Thimphu Resources</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#additional-resources">Additional Resources</a></li>
+            <li class="dropdown">
+                <a href="#" onclick="return false;">Themes</a>
+                <ul class="dropdown-menu">
+                    <li><a href="page-theme.html">Environment</a></li>
+                    <li><a href="index.html#theme-culture">Culture &amp; Identity</a></li>
+                    <li><a href="index.html#theme-cosmology">Cosmology</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#interactive-map">Interactive Map</a></li>
+            <li><a href="index.html#announcements">Announcements</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+<!-- ══════════════════
+     PAGE HERO
+     ══════════════════ -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <span class="badge">✦ LOCATIONS · THIMPHU</span>
+        <h1>Thimphu <br><span class="serif">Resources</span></h1>
+        <p>Sacred rituals, mask dances, living Buddhist traditions, and cultural narratives from the capital highlands and its surrounding sacred valleys.</p>
+    </div>
+</section>
+
+<!-- ══════════════════
+     PAGE BODY
+     ══════════════════ -->
+<div class="page-body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <p class="sidebar-label">✦ On This Page</p>
+        <nav id="toc-nav">
+            <ul>
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#films">Films</a></li>
+                <li><a href="#photo-essays">Photo Essays</a></li>
+                <li><a href="#oral-histories">Oral Histories</a></li>
+                <li><a href="#vignettes">Vignettes</a></li>
+                <li><a href="#map">Location Map</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <p class="sidebar-label">Filter by Theme</p>
+        <div class="sidebar-tag-wrap">
+            <button class="s-tag">Ritual</button>
+            <button class="s-tag">Cosmology</button>
+            <button class="s-tag">Culture</button>
+            <button class="s-tag">Sacred Sites</button>
+            <button class="s-tag">Mask Dance</button>
+            <button class="s-tag">Buddhism</button>
+        </div>
+        <hr>
+        <p class="sidebar-label">Other Locations</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="haa-resources.html"
+                       class="sidebar-nav-link"
+                       onclick="window.location.href='haa-resources.html'; return false;">
+                        Haa Resources
+                    </a>
+                </li>
+                <li>
+                    <a href="sephu-resources.html"
+                       class="sidebar-nav-link"
+                       onclick="window.location.href='sephu-resources.html'; return false;">
+                        Sephu Resources
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content-main">
+
+        <!-- INTRO BAND -->
+        <div class="intro-band" id="overview">
+            <div>
+                <h2>Sacred Culture<br>of <em>Thimphu</em></h2>
+                <p>Thimphu, Bhutan's capital, sits at the intersection of highland tradition and modern Bhutanese identity. Its dzongs, sacred sites, and living ritual practices make it a vital center of cultural preservation. This archive documents the mask dances, oral traditions, and spiritual geographies that define Thimphu's highland heritage — resources created in partnership with RTC faculty and local community leaders.</p>
+            </div>
+            <div class="intro-stats">
+                <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Films</span></div>
+                <div class="stat-item"><span class="stat-num">24</span><span class="stat-label">Essays</span></div>
+                <div class="stat-item"><span class="stat-num">12</span><span class="stat-label">Voices</span></div>
+            </div>
+        </div>
+
+        <!-- ══ FEATURED ══ -->
+        <section id="featured">
+            <p class="section-eyebrow">✦ FEATURED</p>
+            <h2 class="section-title">Start Here</h2>
+            <p class="section-desc">Our most complete documentation of Thimphu's sacred ritual life — the mask dances of the annual Thimphu Tshechu.</p>
+
+            <a class="highlight-card" href="photo-essay.html">
+                <div class="hc-img">
+                    <img src="images/mask dance.jpg" alt="Sacred Rituals of the Highlands — Mask Dance at Thimphu Tshechu">
+                </div>
+                <div class="hc-body">
+                    <p class="section-eyebrow">⬡ Photo Essay · 24 photos</p>
+                    <h3 class="hc-title">Sacred Rituals of the Highlands — Mask Dance at Thimphu Tshechu</h3>
+                    <p class="hc-desc">Against the backdrop of high-altitude peaks, the festival serves as a vibrant display of devotion and artistry. Dancers perform intricate movements symbolizing the subduing of negative energies and the celebration of faith — a tradition stretching back centuries.</p>
+                    <div class="rc-tag-row">
+                        <span class="rc-tag">Thimphu</span>
+                        <span class="rc-tag">Cosmology</span>
+                        <span class="rc-tag">Ritual</span>
+                        <span class="rc-tag">Mask Dance</span>
+                    </div>
+                    <span class="rc-cta" style="margin-top:0.9rem; display:inline-block;">View Photo Essay →</span>
+                </div>
+            </a>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ══ FILMS ══ -->
+        <section id="films">
+            <p class="section-eyebrow">✦ FILMS</p>
+            <h2 class="section-title">Documentary Films</h2>
+            <p class="section-desc">Films exploring the ritual calendar, sacred architecture, and living Buddhist traditions of the Thimphu highlands.</p>
+            <div class="resource-grid">
+
+                <a class="resource-card" href="thimphu-film-tshechu.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-film-tshechu-thumb.avif" alt="The Sound of the Drum">
+                        <span class="rc-pill pill-film">▶ Film · 24:15</span>
+                        <div class="play-over">
+                            <div class="play-circle-sm">
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Ritual</span><span class="rc-tag">Cosmology</span></div>
+                        <h3 class="rc-title">The Sound of the Drum — Thimphu Tshechu</h3>
+                        <p class="rc-desc">A full documentation of the Thimphu Tshechu festival — from the preparation of costumes and masks to the final unfurling of the sacred thangka at dawn.</p>
+                        <span class="rc-cta">Watch Film →</span>
+                    </div>
+                </a>
+
+                <a class="resource-card" href="thimphu-film-dzong.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-film-dzong-thumb.avif" alt="Tashichho Dzong">
+                        <span class="rc-pill pill-film">▶ Film · 16:40</span>
+                        <div class="play-over">
+                            <div class="play-circle-sm">
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Sacred Sites</span><span class="rc-tag">Architecture</span></div>
+                        <h3 class="rc-title">Tashichho Dzong — Living Monument of State and Faith</h3>
+                        <p class="rc-desc">An architectural and spiritual portrait of Tashichho Dzong — exploring how Bhutan's seat of government is also a living center of Buddhist practice and ceremony.</p>
+                        <span class="rc-cta">Watch Film →</span>
+                    </div>
+                </a>
+
+                <a class="resource-card" href="thimphu-film-butterlamps.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-film-butterlamps-thumb.avif" alt="Butter Lamps at Dusk">
+                        <span class="rc-pill pill-film">▶ Film · 19:05</span>
+                        <div class="play-over">
+                            <div class="play-circle-sm">
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Buddhism</span><span class="rc-tag">Culture</span></div>
+                        <h3 class="rc-title">Butter Lamps at Dusk — Offering Practices in Thimphu</h3>
+                        <p class="rc-desc">A meditative film following the daily offering practices of monks and laypeople across Thimphu's temples — the lighting of butter lamps as a spiritual act and communal bond.</p>
+                        <span class="rc-cta">Watch Film →</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ══ PHOTO ESSAYS ══ -->
+        <section id="photo-essays">
+            <p class="section-eyebrow">✦ PHOTO ESSAYS</p>
+            <h2 class="section-title">Photo Essays</h2>
+            <p class="section-desc">Visual records of Thimphu's sacred sites, festival life, and everyday cultural practices.</p>
+            <div class="resource-grid">
+
+                <a class="resource-card" href="thimphu-essay-masks.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-essay-masks-thumb.avif" alt="The Faces Behind the Masks">
+                        <span class="rc-pill pill-essay">⬡ Essay · 20 photos</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Mask Dance</span><span class="rc-tag">Ritual</span></div>
+                        <h3 class="rc-title">The Faces Behind the Masks — Cham Dancers of Thimphu</h3>
+                        <p class="rc-desc">Portraits and process photographs of the Cham dancers — the men and monks who train for years to embody deities through movement, costume, and devotion.</p>
+                        <span class="rc-cta">View Essay →</span>
+                    </div>
+                </a>
+
+                <a class="resource-card" href="thimphu-essay-cheri.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-essay-cheri-thumb.avif" alt="Cheri Monastery">
+                        <span class="rc-pill pill-essay">⬡ Essay · 16 photos</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Sacred Sites</span><span class="rc-tag">Nature</span></div>
+                        <h3 class="rc-title">Cheri Monastery — Solitude Above the Capital</h3>
+                        <p class="rc-desc">A photo essay on Cheri Monastery, Bhutan's first monastery founded by Zhabdrung Ngawang Namgyal — capturing its atmosphere of remote contemplation above the Thimphu valley.</p>
+                        <span class="rc-cta">View Essay →</span>
+                    </div>
+                </a>
+
+                <a class="resource-card" href="thimphu-essay-kora.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-essay-kora-thumb.avif" alt="Kora at Dawn">
+                        <span class="rc-pill pill-essay">⬡ Essay · 28 photos</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Buddhism</span><span class="rc-tag">Everyday Life</span></div>
+                        <h3 class="rc-title">Kora at Dawn — Circumambulation and Community in Thimphu</h3>
+                        <p class="rc-desc">Documenting the early-morning kora practice around Thimphu's temples — how daily circumambulation creates sacred geography and communal rhythm in the city's highland setting.</p>
+                        <span class="rc-cta">View Essay →</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- FEATURED QUOTE -->
+        <div class="featured-quote">
+            <blockquote>"When the masks come on, we are no longer ourselves. We become the deity. The costume is not a disguise — it is a doorway. Every movement we make, every beat of the drum, is an offering."</blockquote>
+            <span class="quote-attr">— Karma Tenzin, Cham Dancer, Thimphu Tshechu · Recorded 2023</span>
+        </div>
+
+        <!-- ══ ORAL HISTORIES ══ -->
+        <section id="oral-histories">
+            <p class="section-eyebrow">✦ ORAL HISTORIES</p>
+            <h2 class="section-title">Voices from Thimphu</h2>
+            <p class="section-desc">Testimonies from monks, ritual specialists, craftspeople, and community elders on the living spiritual and cultural traditions of Thimphu.</p>
+            <div class="oral-list">
+
+                <div class="oral-item">
+                    <div class="oral-icon">🎙️</div>
+                    <div class="oral-info">
+                        <h4>The Origins and Meaning of the Tshechu</h4>
+                        <p>Lopen Karma Phuntsho, Scholar-monk · An in-depth account of the Tshechu's historical origins, its theological significance, and how the festival has evolved over generations in Thimphu.</p>
+                    </div>
+                    <div class="oral-meta"><strong>52 min</strong>Audio + Transcript</div>
+                </div>
+
+                <div class="oral-item">
+                    <div class="oral-icon">🎙️</div>
+                    <div class="oral-info">
+                        <h4>Making the Masks — A Master Craftsman's Testimony</h4>
+                        <p>Pema Tshering, 64 · Mask carver — describes the ritual protocols, wood selection, and iconographic rules governing the creation of sacred Cham masks in the Thimphu tradition.</p>
+                    </div>
+                    <div class="oral-meta"><strong>38 min</strong>Audio</div>
+                </div>
+
+                <div class="oral-item">
+                    <div class="oral-icon">🎙️</div>
+                    <div class="oral-info">
+                        <h4>Sacred Springs and Spirit Sites Around Thimphu</h4>
+                        <p>Dechen Wangmo, 77 · Elder — maps the network of sacred springs, rocks, and trees in the Thimphu valley regarded as dwellings of local deities and their associated rituals.</p>
+                    </div>
+                    <div class="oral-meta"><strong>45 min</strong>Audio</div>
+                </div>
+
+                <div class="oral-item">
+                    <div class="oral-icon">🎙️</div>
+                    <div class="oral-info">
+                        <h4>Weaving Kira — Women's Textile Knowledge in Highland Thimphu</h4>
+                        <p>Tshomo, 55 · Master weaver — describes the symbolic vocabulary of Kira textile patterns associated with the Thimphu highlands and how this knowledge is transmitted between women.</p>
+                    </div>
+                    <div class="oral-meta"><strong>31 min</strong>Audio + Transcript</div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- ══ VIGNETTES ══ -->
+        <section id="vignettes">
+            <p class="section-eyebrow">✦ VIGNETTES</p>
+            <h2 class="section-title">Ethnographic Vignettes</h2>
+            <p class="section-desc">Short narrative pieces drawing on fieldwork at Thimphu's sacred sites, festivals, and community gatherings.</p>
+            <div class="resource-grid">
+
+                <a class="resource-card" href="thimphu-vignette-deity.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-vignette-deity-thumb.avif" alt="The Deity Enters the Dance Floor">
+                        <span class="rc-pill pill-vignette">◈ Vignette · 8 min read</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Cosmology</span><span class="rc-tag">Ritual</span></div>
+                        <h3 class="rc-title">The Deity Enters the Dance Floor</h3>
+                        <p class="rc-desc">A close observation of the moment in the Thimphu Tshechu when the head dancer invokes the deity — exploring how performance becomes possession in the Cham tradition.</p>
+                        <span class="rc-cta">Read Vignette →</span>
+                    </div>
+                </a>
+
+                <a class="resource-card" href="thimphu-vignette-dzong.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-vignette-dzong-thumb.avif" alt="The Geometry of the Dzong">
+                        <span class="rc-pill pill-vignette">◈ Vignette · 6 min read</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Sacred Sites</span><span class="rc-tag">Buddhism</span></div>
+                        <h3 class="rc-title">The Geometry of the Dzong — Space and Faith</h3>
+                        <p class="rc-desc">A vignette on how the architectural layout of Tashichho Dzong encodes cosmological order — how you move through its courtyards is how you move through the sacred universe.</p>
+                        <span class="rc-cta">Read Vignette →</span>
+                    </div>
+                </a>
+
+                <a class="resource-card" href="thimphu-vignette-groves.html">
+                    <div class="rc-thumb">
+                        <img src="images/thimphu-vignette-groves-thumb.avif" alt="The Sacred Groves">
+                        <span class="rc-pill pill-vignette">◈ Vignette · 10 min read</span>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-tag-row"><span class="rc-tag">Nature</span><span class="rc-tag">Cosmology</span></div>
+                        <h3 class="rc-title">The Sacred Groves Above the Valley — Trees as Guardians</h3>
+                        <p class="rc-desc">How the forested ridgelines above Thimphu are understood as living protectors by local communities — the rituals, prohibitions, and oral lore that keep these groves intact.</p>
+                        <span class="rc-cta">Read Vignette →</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <hr class="sec-divider">
+
+        <!-- MAP -->
+        <section id="map">
+            <p class="section-eyebrow">✦ LOCATION</p>
+            <h2 class="section-title">Thimphu on the Map</h2>
+            <p class="section-desc">Situating the fieldwork sites, sacred landmarks, and ritual spaces documented in this archive.</p>
+            <div class="map-placeholder">
+                <span class="map-icon">🗺️</span>
+                <p>Interactive map coming soon</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<footer class="page-footer">
+    <p>© 2026 Highland Heritage Project · A Royal Thimphu College Initiative</p>
+</footer>
+
+<script>
+    /*
+     * SAFE scroll-spy: only updates #toc-nav links (on-page anchors).
+     * Does NOT intercept or preventDefault on any link — external page
+     * links navigate normally.
+     */
+    (function () {
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const tocLinks = document.querySelectorAll('#toc-nav a');
+
+        function updateActive() {
+            let current = '';
+            sections.forEach(function (sec) {
+                if (window.scrollY >= sec.offsetTop - 140) {
+                    current = sec.id;
+                }
+            });
+            tocLinks.forEach(function (a) {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActive);
+        updateActive();
+    })();
+</script>
+
+</body>
+</html>
